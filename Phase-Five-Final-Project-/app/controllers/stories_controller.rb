@@ -3,5 +3,5 @@ class StoriesController < ApplicationController
     belongs_to :user
     has_many :reviews, through: :users
     has_one :style 
-    has_one :genre 
+    has_many :genre 
 end
