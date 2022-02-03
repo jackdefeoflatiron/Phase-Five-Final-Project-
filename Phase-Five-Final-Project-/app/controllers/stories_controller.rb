@@ -1,7 +1,29 @@
 class StoriesController < ApplicationController
-    has_many :chapters 
-    belongs_to :user
-    has_many :reviews, through: :users
-    has_one :style 
-    has_many :genre 
+    
+    def index
+        stories = Story.all
+        render :json stories, status: :ok
+    end 
+
+    def show
+        stories = find_story
+        render json: stories
+    end 
+
+    def create 
+        story = Story.create!(story_params)
+    end 
+
+    def destroy
+        stories = find_story
+        stories.destory 
+    end 
+    private 
+    def find_story
+        Story.find(params[:story_name])
+    end
+
+    def story_params
+        params.permit()
+    end 
 end

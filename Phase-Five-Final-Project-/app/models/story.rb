@@ -1,7 +1,7 @@
 class Story < ApplicationRecord
-
-    def index
-        stories = Story.all
-        render :json stories, status: :ok
-    end 
+    has_many :chapters 
+    belongs_to :user
+    has_many :reviews, through: :users
+    has_one :style 
+    has_many :genre 
 end

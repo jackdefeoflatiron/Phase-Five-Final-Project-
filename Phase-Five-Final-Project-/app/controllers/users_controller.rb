@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-    has_many :stories 
-    has_many :reviews, through: :stories 
-
+    
+    def create 
+        user = User.create!(user_params)
+        
+    end 
 end
