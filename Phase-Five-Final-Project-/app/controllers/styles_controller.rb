@@ -4,8 +4,13 @@ class StylesController < ApplicationController
         render json: style
     end 
 
+    def destroy
+        style = find_style
+        style.destroy 
+    end 
+
     private
     def find_style
-        Style.find(params[:style])
+        Style.find(params[:id])
     end 
 end

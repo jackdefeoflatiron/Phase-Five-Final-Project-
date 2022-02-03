@@ -12,11 +12,15 @@ class ReviewsController < ApplicationController
 
     def destroy 
         review = find_review
-        
+        review.destroy
     end
 
     private 
     def reviews_params
         params.permit(:review, :rating)
+    end
+
+    def find_review
+        Review.find(params[:id])
     end
 end
