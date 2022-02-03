@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :styles
+  resources :styles, only: 
   resources :stories
   resources :chapters
   resources :reviews

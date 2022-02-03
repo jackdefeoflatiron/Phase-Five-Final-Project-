@@ -4,6 +4,11 @@ class StylesController < ApplicationController
         render json: style
     end 
 
+    def create
+        style = Style.create!(style_params)
+        render json: style 
+    end 
+
     def destroy
         style = find_style
         style.destroy 
@@ -12,5 +17,9 @@ class StylesController < ApplicationController
     private
     def find_style
         Style.find(params[:id])
+    end 
+
+    def style_params
+        params.permit(:style)
     end 
 end

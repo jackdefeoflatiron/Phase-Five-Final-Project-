@@ -3,10 +3,16 @@ class ChaptersController < ApplicationController
         chapters = Chapter.all
         render json: chapters
     end
+    
     def update 
         chapter = Chapter.find_by(id: params[:id])
         chapter.update(chapter_params)
         render json: chapter
+    end 
+
+    def show 
+        chapter = find_chapter
+        render json: chapter 
     end 
 
     def create
