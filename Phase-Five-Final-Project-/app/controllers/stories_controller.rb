@@ -11,7 +11,9 @@ class StoriesController < ApplicationController
     end 
 
     def update
-        
+        story = Chapter.find_by(id: params[:id])
+        story.update(story_params)
+        render json: chapter 
     end 
 
     def create 
