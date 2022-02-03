@@ -10,6 +10,10 @@ class StoriesController < ApplicationController
         render json: stories
     end 
 
+    def update
+        
+    end 
+
     def create 
         story = Story.create!(story_params)
     end 
@@ -20,10 +24,10 @@ class StoriesController < ApplicationController
     end 
     private 
     def find_story
-        Story.find(params[:story_name])
+        Story.find(params[:story_name, :author, :age_group])
     end
 
     def story_params
-        params.permit()
+        params.permit(:)
     end 
 end
