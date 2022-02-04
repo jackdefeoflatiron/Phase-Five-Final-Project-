@@ -15,6 +15,12 @@ class ReviewsController < ApplicationController
         review.destroy
     end
 
+    def update 
+        review = Review.find_review(id: params[:id])
+        review.update(reviews_params)
+        redner json: review 
+    end 
+
     private 
     def reviews_params
         params.permit(:review, :rating)
