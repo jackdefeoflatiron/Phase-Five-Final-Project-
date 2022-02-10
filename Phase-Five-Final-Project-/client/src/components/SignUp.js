@@ -84,28 +84,28 @@ return (
             type="text"
             name="username"
             value={username}
-            onChange={handleChange}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <input
             placeholder="email"
             type="text"
             name="email"
             value={email_address}
-            onChange={handleChange}
+            onChange={(e) => setEmail_address(e.target.value)}
           />
           <input 
             placeholder="password"
             type="password"
             name="password"
             value={password}
-            onChange={handleChange}
+            onChange={(e) => setPassword(e.target.value)}
           />          
           <input
             placeholder="password confirmation"
             type="password"
             name="password_confirmation"
             value={password_confirmation}
-            onChange={this.handleChange}
+            onChange={(e) => setPassword_conformation(e.target.value)}
           />
 
           <input
@@ -113,7 +113,7 @@ return (
             type="Bio"
             name="Bio"
             value={bio}
-            onChange={this.handleChange}
+            onChange={(e) => setBio(e.target.value)}
           />
 
           <input
@@ -121,7 +121,7 @@ return (
             type="ProfilePicture"
             name="ProfilePicture"
             value={profile_picture}
-            onChange={this.handleChange}
+            onChange={(e) => setProfile_picture(e.target.value)}
           />
         
           <button placeholder="submit" type="submit">
