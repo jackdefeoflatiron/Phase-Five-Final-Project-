@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
-function Signup() {
-
+function Signup({handleLogin}) {
+const [errors, setErrors] = useState([])
 const handleChange = (event) => {
     const {name, value} = event.target
     this.setState({
@@ -18,27 +18,37 @@ const handleSubmit = (event) => {
       password: password,
       password_confirmation: password_confirmation
     }
-axios.post('http://localhost:3000/users', {user}, {withCredentials: true})
-    .then(response => {
+fetch('http://localhost:3000/users', {
+  method : 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  },
+  body: JSON.stringify(user),
+}
+
+)
+  .then(response => response.json())
+  .then(response => {
       if (response.data.status === 'created') {
-        this.props.handleLogin(response.data)
-        this.redirect()
+          handleLogin(response.data)
+        redirect()
       } else {
-        this.setState({
-          errors: response.data.errors
-        })
+        setErrors(
+          response.data.errors
+        )
       }
     })
     .catch(error => console.log('api errors:', error))
   };
 const redirect = () => {
-    this.props.history.push('/')
+    props.history.push('/')
   }
 
 const handleErrors = () => {
     return (
       <div>
-        <ul>{this.state.errors.map((error) => {
+        <ul>{errors.map((error) => {
           return <li>key={error}>{error}</li>
         })}
         </ul> 

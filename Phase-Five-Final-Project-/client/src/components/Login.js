@@ -1,5 +1,4 @@
 import React, { Component, useState} from 'react';
-import axios from 'axios'
 import {Link, useHistory} from 'react-router-dom'
 
 function Login({handleLogin}) {

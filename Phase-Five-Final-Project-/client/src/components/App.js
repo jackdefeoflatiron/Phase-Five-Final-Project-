@@ -2,7 +2,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { Component, useState, useEffect } from 'react';
-import axios from 'axios'
+// import axios from 'axios'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Home from './Home';
 import Login from './Login';
@@ -19,6 +19,7 @@ function App() {
 const [logout, setLogout] = useState(false)
 const [story, setAllStories] = useState([])
 const [searchStories, setSearchStories] = useState("")
+const [login, setLogin] = useState(false)
 
 useEffect(() => {
   fetch("http://localhost:3001/story")
@@ -28,13 +29,13 @@ useEffect(() => {
 
 
 const handleLogin = (data) => {
-    setLogout({
+    setLogin({
       isLoggedIn: true,
       user: data.user
     })
   } 
 const handleLogout = () => {
-    this.setState({
+    setLogout({
     isLoggedIn: false,
     user: {}
     })
@@ -47,13 +48,14 @@ const displayStory = story.filter((story) => {
 
 
 const loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in', 
+    fetch('http://localhost:3001/logged_in', 
    {withCredentials: true})    
-.then(response => {
+   .then(response => response.json())
+   .then(response => {
       if (response.data.logged_in) {
-        this.handleLogin(response)
+        handleLogin(response)
       } else {
-        this.handleLogout()
+        handleLogout()
       }
     })
     .catch(error => console.log('api errors:', error))
@@ -65,14 +67,14 @@ const loginStatus = () => {
 
 
       <div>
-      <Header onchangeSearch={setSearchStories} searchStories={searchStories}/> 
-         <BrowserRouter>
+      <Header onchangeSearch={setSearchStories} searchStories={searchStories}/>  */}
+          <BrowserRouter>
           <Switch>
             <Route  path='/login'>
               <Login handleLogin={handleLogin} />
               </Route>
             <Route path='/signup'>
-            <SignUp/>
+            <SignUp handleLogin={handleLogin}/>
             </Route>
             <Route path='/'>
               <Home/>
