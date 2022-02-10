@@ -9,6 +9,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 import Header from './Header'
 import StoryListContainer from './StoryListContainer';
+import User from './User'
 
 
 
@@ -25,19 +26,19 @@ const [style, setStyle] = useState("")
 const [genre, setGenre] = useState("")
 
 useEffect(() => {
-  fetch("/story")
+  fetch("/stories")
   .then(res => res.json())
-  // .then(data => setAllStories(data))
+  .then(data => setAllStories(data))
 },[])
 useEffect(() => {
-  fetch("/style")
+  fetch("/styles")
   .then(res => res.json())
-  // .then(data => setStyle(data))
+  .then(data => setStyle(data))
 },[])
 useEffect(() => {
-  fetch("/genre")
+  fetch("/genres")
   .then(res => res.json())
-  // .then(data => setGenre(data))
+  .then(data => setGenre(data))
 },[])
 
 const handleLogin = (data) => {
@@ -90,6 +91,9 @@ const loginStatus = () => {
             </Route>
             <Route path='/'>
               <Home/>
+              </Route>
+              <Route path='/user'>
+                <User />
               </Route>
           </Switch>
         </BrowserRouter>

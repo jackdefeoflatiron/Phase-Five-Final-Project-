@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
     
     def index
         stories = Story.all
-        render :json stories, status: :ok
+        render json: stories, status: :ok
     end 
 
     def show
@@ -30,6 +30,6 @@ class StoriesController < ApplicationController
     end
 
     def story_params
-        params.permit(:)
+        params.permit(:story_name, :author, :age_group)
     end 
 end
