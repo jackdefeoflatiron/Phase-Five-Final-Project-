@@ -22,9 +22,9 @@ const [searchStories, setSearchStories] = useState("")
 const [login, setLogin] = useState(false)
 
 useEffect(() => {
-  fetch("http://localhost:3001/story")
+  fetch("/story")
   .then(res => res.json())
-  .then(data => setAllStories(data))
+  // .then(data => setAllStories(data))
 },[])
 
 

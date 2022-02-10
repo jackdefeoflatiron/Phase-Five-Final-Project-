@@ -14,7 +14,7 @@ const [profile_picture, setProfile_picture] =useState("")
 
 const handleSubmit = (event) => {
     event.preventDefault()
-    const {username, email_address, password, password_confirmation, bio, profile_picture} 
+    // const {username, email_address, password, password_confirmation, bio, profile_picture} 
     let user = {
       username: username,
       email_address: email_address,
@@ -54,26 +54,12 @@ const handleErrors = () => {
     return (
       <div>
         <ul>{errors.map((error) => {
-          return <li>key={error}>{error}</li>
+          return <li key={error}>{error}</li>
         })}
         </ul> 
       </div>
     )
   };
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
 
 return (
       <div>
