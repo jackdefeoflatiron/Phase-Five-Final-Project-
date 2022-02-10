@@ -21,13 +21,24 @@ const [logout, setLogout] = useState(false)
 const [story, setAllStories] = useState([])
 const [searchStories, setSearchStories] = useState("")
 const [login, setLogin] = useState(false)
+const [style, setStyle] = useState("")
+const [genre, setGenre] = useState("")
 
 useEffect(() => {
   fetch("/story")
   .then(res => res.json())
   // .then(data => setAllStories(data))
 },[])
-
+useEffect(() => {
+  fetch("/style")
+  .then(res => res.json())
+  // .then(data => setStyle(data))
+},[])
+useEffect(() => {
+  fetch("/genre")
+  .then(res => res.json())
+  // .then(data => setGenre(data))
+},[])
 
 const handleLogin = (data) => {
     setLogin({
