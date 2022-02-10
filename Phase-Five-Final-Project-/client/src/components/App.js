@@ -67,7 +67,7 @@ const loginStatus = () => {
 
 
       <div>
-      <Header onchangeSearch={setSearchStories} searchStories={searchStories}/>  */}
+      <Header onchangeSearch={setSearchStories} searchStories={searchStories}/>  
           <BrowserRouter>
           <Switch>
             <Route  path='/login'>

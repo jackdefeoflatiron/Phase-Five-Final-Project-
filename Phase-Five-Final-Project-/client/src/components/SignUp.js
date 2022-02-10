@@ -1,22 +1,27 @@
-import React, { Component } from 'react';
-import axios from 'axios'
+import React, { useState } from 'react';
+
+import { useHistory } from 'react-router-dom';
 
 function Signup({handleLogin}) {
 const [errors, setErrors] = useState([])
-const handleChange = (event) => {
-    const {name, value} = event.target
-    this.setState({
-      [name]: value
-    })
-  };
+const history = useHistory()
+const [username, setUsername] = useState("")
+const [email_address, setEmail_address] = useState("")
+const [password, setPassword] =useState("")
+const [password_confirmation, setPassword_conformation] =useState("")
+const [bio, setBio] =useState("")
+const [profile_picture, setProfile_picture] =useState("")
+
 const handleSubmit = (event) => {
     event.preventDefault()
-    const {username, email_address, password, password_confirmation, bio, profile} = this.state
+    const {username, email_address, password, password_confirmation, bio, profile_picture} 
     let user = {
       username: username,
       email_address: email_address,
       password: password,
-      password_confirmation: password_confirmation
+      password_confirmation: password_confirmation,
+      bio: bio,
+      profile_picture: profile_picture
     }
 fetch('http://localhost:3000/users', {
   method : 'POST',
@@ -42,7 +47,7 @@ fetch('http://localhost:3000/users', {
     .catch(error => console.log('api errors:', error))
   };
 const redirect = () => {
-    props.history.push('/')
+    history.push('/')
   }
 
 const handleErrors = () => {
@@ -59,7 +64,7 @@ const handleErrors = () => {
 
 
 
-    const {username, email, password, password_confirmation, bio, profile_picture} = this.state
+    
 
 
 
@@ -73,27 +78,27 @@ const handleErrors = () => {
 return (
       <div>
         <h1>Sign Up</h1>        
-<form onSubmit={this.handleSubmit}>
+<form onSubmit={handleSubmit}>
           <input
             placeholder="username"
             type="text"
             name="username"
             value={username}
-            onChange={this.handleChange}
+            onChange={handleChange}
           />
           <input
             placeholder="email"
             type="text"
             name="email"
-            value={email}
-            onChange={this.handleChange}
+            value={email_address}
+            onChange={handleChange}
           />
           <input 
             placeholder="password"
             type="password"
             name="password"
             value={password}
-            onChange={this.handleChange}
+            onChange={handleChange}
           />          
           <input
             placeholder="password confirmation"
