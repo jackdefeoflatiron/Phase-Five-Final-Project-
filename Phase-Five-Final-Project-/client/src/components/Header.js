@@ -1,16 +1,20 @@
 import React from 'react';
+import Searchbar from './SearchBar';
 
 
-function Header() {
+function Header({onchangeSearch, setSearchStories, searchStories}) {
 
 
 
 
 
     return(
+        <div>
         <header as='h1'style={{ fontWeight: "lighter" }}>
             FlatBook{" "}
         </header>
+        <Searchbar onchangeSearch={setSearchStories} searchStories={searchStories}/>
+        </div>
     )
 }
 

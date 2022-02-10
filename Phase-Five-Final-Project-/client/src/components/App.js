@@ -1,7 +1,7 @@
 
 import logo from './logo.svg';
 import './App.css';
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Home from './Home';
@@ -17,9 +17,15 @@ import Header from './Header'
 
 function App() {
 const [logout, setLogout] = useState(false)
-//   componentDidMount() {
-//   this.loginStatus()
-// }\
+const [story, setAllStories] = useState([])
+const [searchStories, setSearchStories] = useState("")
+
+useEffect(() => {
+  fetch("http://localhost:3001/story")
+  .then(res => res.json())
+  .then(data => setAllStories(data))
+},[])
+
 
 const handleLogin = (data) => {
     setLogout({
@@ -33,6 +39,11 @@ const handleLogout = () => {
     user: {}
     })
   }
+
+const displayStory = story.filter((story) => {
+  if (searchStories === "") return true; 
+  return story.title.toUpperCase().includes(searchStories.toUpperCase())
+})
 
 
 const loginStatus = () => {
@@ -54,7 +65,7 @@ const loginStatus = () => {
 
 
       <div>
-      <Header/> 
+      <Header onchangeSearch={setSearchStories} searchStories={searchStories}/> 
          <BrowserRouter>
           <Switch>
             <Route  path='/login'>
