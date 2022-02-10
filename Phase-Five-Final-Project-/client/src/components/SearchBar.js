@@ -8,7 +8,7 @@ function Searchbar ({searchStories,onchangeSearch}) {
       }
       return (
         <div className="filter">
-          <input onChange={handleSearch} value={searchStories} id="search-bar" type="text" placeholder="Search Notes" />
+          <input onChange={handleSearch} value={searchStories} id="search-bar" type="text" placeholder="Search for Stories" />
         </div>
       );
 

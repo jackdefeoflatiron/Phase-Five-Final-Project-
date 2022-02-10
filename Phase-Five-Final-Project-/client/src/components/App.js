@@ -8,6 +8,7 @@ import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
 import Header from './Header'
+import StoryListContainer from './StoryListContainer';
 
 
 
@@ -81,6 +82,7 @@ const loginStatus = () => {
               </Route>
           </Switch>
         </BrowserRouter>
+        <StoryListContainer/>
       </div>
     );
   }; 
