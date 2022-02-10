@@ -1,17 +1,17 @@
-// import React from 'react';
+import React from 'react';
 
 
-// function Header() {
+function Header() {
 
 
 
 
 
-//     return(
-//         <Header as='h1'style={{ fontWeight: "lighter" }}>
-//             FlatBook{" "}
-//         </Header>
-//     )
-// }
+    return(
+        <header as='h1'style={{ fontWeight: "lighter" }}>
+            FlatBook{" "}
+        </header>
+    )
+}
 
-// export default Header
+export default Header

@@ -1,12 +1,31 @@
 class UsersController < ApplicationController
     
     def index 
-        users = User.all
-        render json: users 
+        @users = User.all
+           if @users
+              render json: {
+              users: @users
+           }
+          else
+              render json: {
+              status: 500,
+              errors: ['no users found']
+          }
+         end
     end
         
     def show
-        render json: @current_user, status: :accepted
+        @user = User.find(params[:id])
+           if @user
+              render json: {
+              user: @user
+           }
+           else
+              render json: {
+              status: 500,
+              errors: ['user not found']
+            }
+           end
     end
 
     def update 
@@ -17,14 +36,19 @@ class UsersController < ApplicationController
         
     
     def create 
-        parameters = user_params.to_h
-        if parameters[:profile_picture].blank? then 
-            parameters.delete(:profile_picture)
-        end
-
-        user = User.create!(parameters)
-        session[:user_id] = user.id
-        render json: user, status: :created 
+        @user = User.new(user_params)
+        if @user.save
+            login!  
+            render json: {
+            status: :created,
+            user: @user
+        }
+       else 
+           render json: {
+           status: 500,
+           errors: @user.errors.full_messages
+       }
+       end
         
     end 
 
@@ -34,7 +58,7 @@ class UsersController < ApplicationController
     end 
     private 
     def user_params
-        params.permit(:username, :password, :bio, :admin, :profile_picture, :email_address)
+        params.permit(:username, :password, :bio, :admin, :profile_picture, :email_address, )
     end 
     def find_user 
         User.find(params[:id])

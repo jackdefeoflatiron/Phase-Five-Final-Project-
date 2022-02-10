@@ -2,7 +2,7 @@ import React, { Component, useState} from 'react';
 import axios from 'axios'
 import {Link, useHistory} from 'react-router-dom'
 
-function Login(handleLogin) {
+function Login({handleLogin}) {
 const [username, setUsername] = useState("")
 const [email_address, setEmail_address] = useState("")
 const [password, setPassword] = useState("")
@@ -41,11 +41,12 @@ fetch('/user-login' ,{
 })
 .then((res) =>res.json())
 .then((data) => {
-if (data.data.logged_in) {
-        handleLogin(data.data)
+  console.log(data)
+if (data.logged_in) {
+        handleLogin(data)
         redirect()
       } else {
-        setErrors(data.data.errors)
+        setErrors(data.errors)
       }
       console.log(data)  
 })

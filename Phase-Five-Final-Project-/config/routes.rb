@@ -10,12 +10,15 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  post "/signup", to: "users#create"
-  get "/me", to: "users#show"
-  patch "/users", to: "users#update"
-  #SESSIONS
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
+post '/users',         to: 'users#create'
+get '/users/:user_id', to: 'users#show'
+post '/user-login',         to: 'sessions#create'
+get '/users',          to: 'users#index'
+
+resources :users, only: [:create, :show, :index] do 
+  resources :items, only: [:create, :show, :index, :destroy]
+end
+ 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

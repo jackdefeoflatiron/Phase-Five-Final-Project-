@@ -1,13 +1,13 @@
 
 import logo from './logo.svg';
 import './App.css';
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import axios from 'axios'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
-// import Header from './Header'
+import Header from './Header'
 
 
 
@@ -16,17 +16,17 @@ import SignUp from './SignUp';
 
 
 function App() {
-
+const [logout, setLogout] = useState(false)
 //   componentDidMount() {
 //   this.loginStatus()
 // }\
 
 const handleLogin = (data) => {
-    this.setState({
+    setLogout({
       isLoggedIn: true,
       user: data.user
     })
-  }
+  } 
 const handleLogout = () => {
     this.setState({
     isLoggedIn: false,
@@ -54,7 +54,7 @@ const loginStatus = () => {
 
 
       <div>
-      {/* <Header/>  */}
+      <Header/> 
          <BrowserRouter>
           <Switch>
             <Route  path='/login'>

@@ -20,7 +20,7 @@ module PhaseFiveFinalProject
     # config.eager_load_paths << Rails.root.join("extras")
 
     # This is set in apps generated with the --api flag, and removes session/cookie middleware
-    config.api_only = true
+    config.api_only = false
 
     # ▾ Must add these lines! ▾
     # Adding back cookies and session middleware
