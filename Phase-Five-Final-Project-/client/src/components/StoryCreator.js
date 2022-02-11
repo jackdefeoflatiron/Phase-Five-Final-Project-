@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 
-function StoryCreator({genre, style, login}) {
+function StoryCreator({ login}) {
 const [story_name, setStory_name] = useState("")
 const [author, setAuthor] = useState("")
 const [age_group, setAge_group] =useState("")
-const [storyGenre, setStoryGenre] = useState("")
-const [storyStyle, setStoryStyle] = useState("")
+const [genre, setGenre] = useState("")
+const [style, setStyle] = useState("")
 const [title, setTitle]  = useState("")
 const [chapter_number, setChapter_number]  = useState()
 const [body, setBody]  = useState("")
@@ -14,7 +14,27 @@ const [body, setBody]  = useState("")
 
 const handleSubmitStory = (event) => {
     event.preventDefault()
+    const storyObject = {
+        story_name: story_name,
+        author: login.user.username,
+        user_id: login.user.id,
+        age_group: age_group,
+        genre: genre,
+        style: style,
+        title: title,
+        chapter_number: chapter_number,
+        body: body,
+    };
+    fetch('/stories', {
+        method : 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(storyObject),
+      })
     console.log(login.user)
+    console.log(storyObject)
 }
 
 
@@ -30,13 +50,6 @@ return(
             value={story_name}
             onChange={(e) => setStory_name(e.target.value)}
           />
-          <input
-            placeholder="author"
-            type="text"
-            name="author"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-          />
           <input 
             placeholder="age_group"
             type="text"
@@ -48,15 +61,15 @@ return(
             placeholder="genre"
             type="text"
             name="genre"
-            value={storyGenre}
-            onChange={(e) => setStoryGenre(e.target.value)}
+            value={genre}
+            onChange={(e) => setGenre(e.target.value)}
         />
           <input
             placeholder="style"
             type="text"
             name="style"
-            value={storyStyle}
-            onChange={(e) => setStoryStyle(e.target.value)}
+            value={style}
+            onChange={(e) => setStyle(e.target.value)}
           />
              
           <input

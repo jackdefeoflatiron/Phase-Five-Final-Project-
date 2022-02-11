@@ -44,21 +44,22 @@ useEffect(()=> {
 },[])
 
 console.log(login)
+console.log(story)
 useEffect(() => {
   fetch("/stories")
   .then(res => res.json())
   .then(data => setAllStories(data))
 },[])
-useEffect(() => {
-  fetch("/styles")
-  .then(res => res.json())
-  .then(data => setStyle(data))
-},[])
-useEffect(() => {
-  fetch("/genres")
-  .then(res => res.json())
-  .then(data => setGenre(data))
-},[])
+// useEffect(() => {
+//   fetch("/styles")
+//   .then(res => res.json())
+//   .then(data => setStyle(data))
+// },[])
+// useEffect(() => {
+//   fetch("/genres")
+//   .then(res => res.json())
+//   .then(data => setGenre(data))
+// },[])
 
 const handleLogin = (data) => {
     setLogin({
@@ -114,7 +115,7 @@ const loginStatus = () => {
                 <User user={login.user} genre={genre} story={story} style={style}/>
               </Route>
               <Route path='/storycreator'>
-              <StoryCreator genre={genre} story={story} style={style}/>
+              <StoryCreator genre={genre} story={story} style={style} login={login}/>
               </Route>
             <Route path='/'>
               <Home/>

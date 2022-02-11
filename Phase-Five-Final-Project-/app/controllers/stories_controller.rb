@@ -18,10 +18,10 @@ class StoriesController < ApplicationController
 
     def create 
         story = Story.create!(story_params)
+        genre = Genre.create!(genre_params)
+        style = Style.create!(style_params)
+        chapter = Chapter.create!(chapter_params)
 
-        # Genre.create
-
-        # Style.create
     end 
 
     def destroy
@@ -36,4 +36,15 @@ class StoriesController < ApplicationController
     def story_params
         params.permit(:story_name, :author, :age_group)
     end 
+
+    def genre_params
+        params.permit(:genre)
+    end 
+
+    def style_params
+        params.permit(:style)
+    end 
+    def chapter_params
+        params.permit(:chapter_number, :title, :body)
+    end
 end
