@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 function Signup({handleLogin}) {
 const [errors, setErrors] = useState([])
@@ -23,7 +23,7 @@ const handleSubmit = (event) => {
       bio: bio,
       profile_picture: profile_picture
     }
-fetch('http://localhost:3000/users', {
+fetch('/users', {
   method : 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -113,7 +113,14 @@ return (
           <button placeholder="submit" type="submit">
             Sign Up
           </button>
+          
       
+        
+        <div>
+        <Link to='/home'>Main Page</Link>
+
+        <Link to='/user'>Profile Page</Link>
+        </div>
         </form>
       </div>
     );

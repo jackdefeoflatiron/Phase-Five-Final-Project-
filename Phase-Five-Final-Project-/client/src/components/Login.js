@@ -96,7 +96,13 @@ return (
             Log In
           </button>          
           <div>
-            or <Link to='/signup'>sign up</Link>
+            or <Link to='/signup'>Sign Up</Link>
+          </div>
+          <div>
+            <Link to='/home'>Main Page</Link>
+          </div>
+          <div>
+            <Link to='/user'>Profile Page</Link>
           </div>
           
          </form>

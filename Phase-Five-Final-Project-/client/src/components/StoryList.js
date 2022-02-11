@@ -1,11 +1,12 @@
 import React from 'react'
-import Story from './Story'
+import StoryPreview from './StoryPreview'
+
 
 function StoryList({story, style, genre}) {
 
     return(
         <div> a 
-        <Story>{story}</Story>
+        <StoryPreview>{story}</StoryPreview>
         </div>
     )
         

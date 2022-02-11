@@ -1,7 +1,8 @@
 import React from 'react'
+import StoryDisplayer from './StoryDisplay'
 
 
-function Story({story, genre, style}) {
+function StoryPreview({story, genre, style}) {
 
 
     return(
@@ -17,4 +18,4 @@ function Story({story, genre, style}) {
     )
 }
 
-export default Story 
+export default StoryPreview 
