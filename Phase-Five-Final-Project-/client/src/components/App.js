@@ -17,7 +17,7 @@ import User from './User'
 
 
 
-function App() {
+function App(user) {
 const [logout, setLogout] = useState(false)
 const [story, setAllStories] = useState([])
 const [searchStories, setSearchStories] = useState("")
@@ -93,7 +93,7 @@ const loginStatus = () => {
               <Home/>
               </Route>
               <Route path='/user'>
-                <User />
+                <User user={user}/>
               </Route>
           </Switch>
         </BrowserRouter>
