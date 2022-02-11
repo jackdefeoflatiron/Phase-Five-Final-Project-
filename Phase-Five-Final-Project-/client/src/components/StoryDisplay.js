@@ -21,9 +21,9 @@ return(
             <p>{genre?.genre}</p>
             <p>{style?.style}</p>
             <br></br>
-            <p>{chapter.title}</p>
-            <p>{chapter.number}</p>
-            <p>{chapter.body}</p>
+            <p>{chapter?.title}</p>
+            <p>{chapter?.number}</p>
+            <p>{chapter?.body}</p>
     </div>
 )
 }
