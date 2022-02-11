@@ -6,7 +6,7 @@ return(
     <div>
         <header as='h1'style={{ fontWeight: "lighter" }}>
             Newest Stories{" "}
-            <StoryList></StoryList>
+            <StoryList>{story}</StoryList>
         </header>
 
     </div>

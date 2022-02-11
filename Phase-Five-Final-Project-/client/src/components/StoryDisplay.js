@@ -22,7 +22,7 @@ return(
             <p>{style?.style}</p>
             <br></br>
             <p>{chapter?.title}</p>
-            <p>{chapter?.number}</p>
+            <p>{chapter?.chapter_number}</p>
             <p>{chapter?.body}</p>
     </div>
 )

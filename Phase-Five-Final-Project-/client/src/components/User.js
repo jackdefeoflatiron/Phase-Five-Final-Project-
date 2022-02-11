@@ -1,9 +1,9 @@
 import React from 'react'
 import {Link, BrowserRouter, Switch, Route} from 'react-router-dom'
 
-function User({user}) {
+function User({user, genre, style, login}) {
 
-
+ console.log(user)
     return(
         <div>
             <Link to='/home'> Main Page</Link>

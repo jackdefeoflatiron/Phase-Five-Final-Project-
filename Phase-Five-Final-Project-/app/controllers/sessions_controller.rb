@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
       
         if @user && @user.authenticate(session_params[:password])
           login!
+          session[:user_id] = @user.id
           render json: {
             logged_in: true,
             user: @user
@@ -31,6 +32,7 @@ class SessionsController < ApplicationController
           }
         end
     end
+
     def destroy
           logout!
           render json: {

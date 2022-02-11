@@ -118,7 +118,7 @@ return (
         
         <div>
         <Link to='/home'>Main Page</Link>
-
+        <br></br>
         <Link to='/user'>Profile Page</Link>
         </div>
         </form>

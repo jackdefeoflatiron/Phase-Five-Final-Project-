@@ -10,6 +10,7 @@ import SignUp from './SignUp';
 import Header from './Header'
 import StoryListContainer from './StoryListContainer';
 import User from './User'
+import StoryCreator from './StoryCreator';
 
 
 
@@ -17,7 +18,7 @@ import User from './User'
 
 
 
-function App(user) {
+function App() {
 const [logout, setLogout] = useState(false)
 const [story, setAllStories] = useState([])
 const [searchStories, setSearchStories] = useState("")
@@ -25,6 +26,24 @@ const [login, setLogin] = useState(false)
 const [style, setStyle] = useState("")
 const [genre, setGenre] = useState("")
 
+
+useEffect(()=> {
+  fetch('/users-session')
+  .then((res)=> res.json())
+  .then((data) => {
+  console.log(data)
+  if (data.logged_in) {
+          handleLogin(data)
+          
+        } else {
+          // setErrors(data.errors)
+        }
+        console.log(data)  
+  })
+  
+},[])
+
+console.log(login)
 useEffect(() => {
   fetch("/stories")
   .then(res => res.json())
@@ -60,6 +79,8 @@ const displayStory = story.filter((story) => {
 })
 
 
+
+
 const loginStatus = () => {
     fetch('http://localhost:3001/logged_in', 
    {withCredentials: true})    
@@ -89,11 +110,14 @@ const loginStatus = () => {
             <Route path='/signup'>
             <SignUp handleLogin={handleLogin}/>
             </Route>
+              <Route path='/user'>
+                <User user={login.user} genre={genre} story={story} style={style}/>
+              </Route>
+              <Route path='/storycreator'>
+              <StoryCreator genre={genre} story={story} style={style}/>
+              </Route>
             <Route path='/'>
               <Home/>
-              </Route>
-              <Route path='/user'>
-                <User user={user}/>
               </Route>
           </Switch>
         </BrowserRouter>

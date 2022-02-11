@@ -18,6 +18,10 @@ class StoriesController < ApplicationController
 
     def create 
         story = Story.create!(story_params)
+
+        # Genre.create
+
+        # Style.create
     end 
 
     def destroy

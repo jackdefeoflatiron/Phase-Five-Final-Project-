@@ -28,6 +28,8 @@ class UsersController < ApplicationController
            end
     end
 
+    
+
     def update 
         user = User.find_by(id: params[:id])
         user.update(user_params)
