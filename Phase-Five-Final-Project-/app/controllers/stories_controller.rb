@@ -21,6 +21,7 @@ class StoriesController < ApplicationController
         genre = Genre.create!(genre_params)
         style = Style.create!(style_params)
         chapter = Chapter.create!(chapter_params)
+        render json: story
 
     end 
 
@@ -34,17 +35,17 @@ class StoriesController < ApplicationController
     end
 
     def story_params
-        params.permit(:story_name, :author, :age_group)
+        params.permit(:story_name, :author, :age_group, :user_id)
     end 
 
     def genre_params
-        params.permit(:genre)
+        params.permit(:genre, :story_id)
     end 
 
     def style_params
-        params.permit(:style)
+        params.permit(:style, :story_id)
     end 
     def chapter_params
-        params.permit(:chapter_number, :title, :body)
+        params.permit(:chapter_number, :title, :body, :story_id)
     end
 end

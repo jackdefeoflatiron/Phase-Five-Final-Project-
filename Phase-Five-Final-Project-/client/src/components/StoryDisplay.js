@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 
 
-function StoryDisplayer({user, story, genre, style}) {
+function StoryDisplayer({login, story}) {
 
 const [chapter, setChapter] = useState([])
 
@@ -18,8 +18,8 @@ return(
         <h1>{story?.story_name}</h1>
             <p>{story?.author}</p>
             <p>{story?.age_group}</p>
-            <p>{genre?.genre}</p>
-            <p>{style?.style}</p>
+            {/* <p>{story?.genre}</p>
+            <p>{story?.style}</p> */}
             <br></br>
             <p>{chapter?.title}</p>
             <p>{chapter?.chapter_number}</p>

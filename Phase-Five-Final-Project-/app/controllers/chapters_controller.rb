@@ -27,7 +27,7 @@ class ChaptersController < ApplicationController
     
     private 
     def chapter_params
-        params.permit(:chapter_number, :title, :body)
+        params.permit(:chapter_number, :title, :body, :story_id)
     end
 
     def find_chapter

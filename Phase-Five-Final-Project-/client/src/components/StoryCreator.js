@@ -33,6 +33,8 @@ const handleSubmitStory = (event) => {
         },
         body: JSON.stringify(storyObject),
       })
+      .then((res)=> res.json())
+      .then()
     console.log(login.user)
     console.log(storyObject)
 }

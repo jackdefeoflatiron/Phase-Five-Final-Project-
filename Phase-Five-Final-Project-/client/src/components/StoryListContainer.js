@@ -1,7 +1,7 @@
 import React from 'react'
 import StoryList from './StoryList'
 
-function StoryListContainer({story, genre, style}) {
+function StoryListContainer({story, }) {
 return(
     <div>
         <header as='h1'style={{ fontWeight: "lighter" }}>

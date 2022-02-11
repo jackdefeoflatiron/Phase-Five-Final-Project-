@@ -23,8 +23,7 @@ const [logout, setLogout] = useState(false)
 const [story, setAllStories] = useState([])
 const [searchStories, setSearchStories] = useState("")
 const [login, setLogin] = useState(false)
-const [style, setStyle] = useState("")
-const [genre, setGenre] = useState("")
+
 
 
 useEffect(()=> {
@@ -112,10 +111,10 @@ const loginStatus = () => {
             <SignUp handleLogin={handleLogin}/>
             </Route>
               <Route path='/user'>
-                <User user={login.user} genre={genre} story={story} style={style}/>
+                <User  user={login.user}  story={story} />
               </Route>
               <Route path='/storycreator'>
-              <StoryCreator genre={genre} story={story} style={style} login={login}/>
+              <StoryCreator   story={story}  login={login}/>
               </Route>
             <Route path='/'>
               <Home/>

@@ -2,7 +2,7 @@ import React from 'react'
 import StoryPreview from './StoryPreview'
 
 
-function StoryList({story, style, genre}) {
+function StoryList({story}) {
 
     return(
         <div> a 

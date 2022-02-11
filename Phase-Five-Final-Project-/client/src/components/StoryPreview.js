@@ -2,7 +2,7 @@ import React from 'react'
 import StoryDisplayer from './StoryDisplay'
 
 
-function StoryPreview({story, genre, style}) {
+function StoryPreview({story}) {
 
 
     return(
@@ -11,8 +11,8 @@ function StoryPreview({story, genre, style}) {
             <h1>{story?.story_name}</h1>
             <p>{story?.author}</p>
             <p>{story?.age_group}</p>
-            <p>{genre?.genre}</p>
-            <p>{style?.style}</p>
+            {/* <p>{story?.genre}</p>
+            <p>{story?.style}</p> */}
         </l1>
     </div>
     )

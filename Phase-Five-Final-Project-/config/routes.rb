@@ -15,7 +15,7 @@ get '/users/:user_id', to: 'users#show'
 post '/user-login',    to: 'sessions#create'
 get '/users-session',  to: 'sessions#is_logged_in?'
 get '/users',          to: 'users#index'
-post 'story-create'    to: 'stories#create'
+# post '/story-create'    to: 'stories#create'
 
 resources :users, only: [:create, :show, :index] do 
   resources :items, only: [:create, :show, :index, :destroy]

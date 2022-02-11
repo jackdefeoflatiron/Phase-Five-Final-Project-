@@ -25,6 +25,6 @@ class StylesController < ApplicationController
     end 
 
     def style_params
-        params.permit(:style)
+        params.permit(:style, :story_id)
     end 
 end
