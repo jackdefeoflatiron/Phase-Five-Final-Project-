@@ -41,14 +41,14 @@ ActiveRecord::Schema.define(version: 2022_02_11_210730) do
     t.string "author"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
   end
 
   create_table "styles", force: :cascade do |t|
     t.string "style"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "story_id", null: false
+    t.integer "story_id"
   end
 
   create_table "users", force: :cascade do |t|

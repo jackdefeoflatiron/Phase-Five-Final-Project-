@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 
-function StoryCreator({ login}) {
+function StoryCreator({ login, onAdd}) {
 const [story_name, setStory_name] = useState("")
 const [author, setAuthor] = useState("")
 const [age_group, setAge_group] =useState("")
@@ -34,7 +34,8 @@ const handleSubmitStory = (event) => {
         body: JSON.stringify(storyObject),
       })
       .then((res)=> res.json())
-      .then()
+      .then(onAdd)
+      
     console.log(login.user)
     console.log(storyObject)
 }
@@ -75,7 +76,7 @@ return(
           />
              
           <input
-            placeholder="title"
+            placeholder="chapter_title"
             type="text"
             name="title"
             value={title}

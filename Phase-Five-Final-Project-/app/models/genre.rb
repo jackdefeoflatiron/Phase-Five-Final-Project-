@@ -1,3 +1,3 @@
 class Genre < ApplicationRecord
-    belongs_to :stories
+    belongs_to :story
 end

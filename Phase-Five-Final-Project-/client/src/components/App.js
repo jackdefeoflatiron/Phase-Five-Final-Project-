@@ -11,6 +11,8 @@ import Header from './Header'
 import StoryListContainer from './StoryListContainer';
 import User from './User'
 import StoryCreator from './StoryCreator';
+import StoryList from './StoryList';
+import StoryDisplay from './StoryDisplay';
 
 
 
@@ -95,7 +97,9 @@ const loginStatus = () => {
     .catch(error => console.log('api errors:', error))
   };
 
-
+  function handleAddStories(addedStory) {
+  setAllStories((story) => [...story, addedStory]);
+}
  
     return (
 
@@ -114,14 +118,20 @@ const loginStatus = () => {
                 <User  user={login.user}  story={story} />
               </Route>
               <Route path='/storycreator'>
-              <StoryCreator   story={story}  login={login}/>
+              <StoryCreator onAdd={handleAddStories}  story={story}  login={login}/>
+              </Route>
+              <Route path='/story/:id'>
+              <StoryDisplay story={story} user={login.user}/>
               </Route>
             <Route path='/'>
               <Home/>
               </Route>
           </Switch>
+          <StoryListContainer 
+        story={story}
+        />
         </BrowserRouter>
-        <StoryListContainer/>
+        
       </div>
     );
   }; 

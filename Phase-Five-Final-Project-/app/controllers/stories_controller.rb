@@ -17,10 +17,11 @@ class StoriesController < ApplicationController
     end 
 
     def create 
+        
         story = Story.create!(story_params)
-        genre = Genre.create!(genre_params)
-        style = Style.create!(style_params)
-        chapter = Chapter.create!(chapter_params)
+        genre = story.genres.create!(genre_params)
+        style = story.styles.create!(style_params)
+        chapter = story.chapters.create!(chapter_params)
         render json: story
 
     end 
