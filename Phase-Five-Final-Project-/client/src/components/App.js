@@ -13,6 +13,7 @@ import User from './User'
 import StoryCreator from './StoryCreator';
 import StoryList from './StoryList';
 import StoryDisplay from './StoryDisplay';
+import Logout from './Logout';
 
 
 
@@ -111,9 +112,13 @@ const loginStatus = () => {
             <Route  path='/login'>
               <Login handleLogin={handleLogin} />
               </Route>
+            
             <Route path='/signup'>
             <SignUp handleLogin={handleLogin}/>
             </Route>
+            <Route path='/logout'>
+                <Logout handleLogout={handleLogout}/>
+              </Route>
               <Route path='/user'>
                 <User  user={login.user}  story={story} />
               </Route>

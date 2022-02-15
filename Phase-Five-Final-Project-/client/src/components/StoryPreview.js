@@ -16,7 +16,6 @@ console.log(story)
             <p>{story.genre}</p>
             <p>{story.style}</p>
         </l1>
-    {/* //link to=`/story/${story:id}` */}
     </div>
     )
 }
