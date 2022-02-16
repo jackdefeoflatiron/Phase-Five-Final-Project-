@@ -10,14 +10,16 @@ function StoryDisplay({login,user, story}) {
 // .then((res)=> res.json())
 // .then((data) => setChapter(data))
 // }, [])
-console.log("story:", story)
+// console.log(story)
 const params = useParams()
 
-console.log( params)
-
+// console.log( params)
+// console.log(story[params.id].title)
 // const diplayStory = story.filter(oneStory => (oneStory.id === params.id))
 // setSelectedStory(diplayStory)
 // console.log("Check single story: " , selectedStory)
+console.log(user)
+console.log(login)
 
 return(
     <div>
@@ -28,10 +30,15 @@ return(
             <p>{story[params.id].genre}</p>
             <p>{story[params.id].style}</p>
             <br></br>
+            <div>
+                
+            </div>
+            <br></br>
             <p>{story[params.id].title}</p>
             <p>{story[params.id].chapter_number}</p>
             <p>{story[params.id].body}</p>
     </div>
+
 )
 }
 export default StoryDisplay

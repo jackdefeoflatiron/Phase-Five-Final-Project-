@@ -3,8 +3,8 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import StoryPreview from './StoryPreview'
 
 
-function StoryList({story}) {
-console.log(story)
+function StoryList({story, user, login}) {
+// console.log(story)
     return(
         <div> 
 {/* <BrowserRouter>

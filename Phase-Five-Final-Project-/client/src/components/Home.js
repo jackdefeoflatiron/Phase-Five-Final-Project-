@@ -2,7 +2,7 @@ import React from 'react';
 import {Link, BrowserRouter, Switch, Route} from 'react-router-dom'
 const Home = (login) => {
 
-  console.log(login.user)
+  // console.log(login.user)
   return (
     <div>
     

@@ -29,6 +29,7 @@ const [login, setLogin] = useState(false)
 
 
 
+
 useEffect(()=> {
   fetch('/users-session')
   .then((res)=> res.json())
@@ -45,8 +46,8 @@ useEffect(()=> {
   
 },[])
 
-console.log(login)
-console.log(story)
+// console.log(login)
+// console.log(story)
 useEffect(() => {
   fetch("/stories")
   .then(res => res.json())
@@ -117,7 +118,7 @@ const loginStatus = () => {
             <SignUp handleLogin={handleLogin}/>
             </Route>
             <Route path='/logout'>
-                <Logout handleLogout={handleLogout}/>
+                <Logout handleLogout={handleLogout} />
               </Route>
               <Route path='/user'>
                 <User  user={login.user}  story={story} />
@@ -126,7 +127,7 @@ const loginStatus = () => {
               <StoryCreator onAdd={handleAddStories}  story={story}  login={login}/>
               </Route>
               <Route path='/story/:id'>
-              <StoryDisplay story={story} user={login.user}/>
+              <StoryDisplay  story={story} />
               </Route>
             <Route path='/'>
               <Home/>

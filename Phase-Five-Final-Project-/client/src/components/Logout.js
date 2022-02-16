@@ -7,14 +7,14 @@ function logout ({handleLogout}) {
     const history = useHistory()
 
 
-    const redirect = () => {
-        history.push('/')
-      }
+    // const redirect = () => {
+    //     history.push('/')
+    //   }
 
 
       return (
           <div>
-            <button placeholder="submit" type="submit" handleLogout={handleLogout}>
+            <button placeholder="click" type="click" onClick={handleLogout}>
                   Logout
             </button>
             <br></br>

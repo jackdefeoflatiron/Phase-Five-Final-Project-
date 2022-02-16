@@ -3,8 +3,8 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import StoryList from './StoryList'
 
 
-function StoryListContainer({story, }) {
-    console.log(story)
+function StoryListContainer({story, user, login}) {
+    // console.log(story)
 return(
     <div>
         <header as='h1'style={{ fontWeight: "lighter" }}>

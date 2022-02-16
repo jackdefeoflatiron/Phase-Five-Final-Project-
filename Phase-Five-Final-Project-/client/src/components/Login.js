@@ -94,15 +94,22 @@ return (
           />         
 <button placeholder="submit" type="submit">
             Log In
-          </button>          
+          </button> 
           <div>
-            or <Link to='/signup'>Sign Up</Link>
+            or
+          </div>
+          <br></br>     
+          <div>
+            <Link to='/signup'>Sign up</Link>
           </div>
           <div>
             <Link to='/home'>Main Page</Link>
           </div>
           <div>
             <Link to='/user'>Profile Page</Link>
+          </div>
+          <div>
+            <Link to='/logout'>Logout </Link>
           </div>
           
          </form>

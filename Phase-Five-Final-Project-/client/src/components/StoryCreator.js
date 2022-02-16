@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 
-function StoryCreator({ login, onAdd}) {
+function StoryCreator({ login, onAdd, user}) {
 const [story_name, setStory_name] = useState("")
 const [author, setAuthor] = useState("")
 const [age_group, setAge_group] =useState("")
@@ -36,8 +36,8 @@ const handleSubmitStory = (event) => {
       .then((res)=> res.json())
       .then(onAdd)
       
-    console.log(login.user)
-    console.log(storyObject)
+    // console.log(login.user)
+    // console.log(storyObject)
 }
 
 
