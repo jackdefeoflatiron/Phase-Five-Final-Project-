@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {BrowserRouter, Switch, Route, Link, useParams} from 'react-router-dom'
 
 function StoryDisplay({login,user, story}) {
+    // const {id, story_name, author, age_group, genres ,styles, title, chapter_number, body} = displayStory 
     // const [id, setId] = useState(0)
 // const [selectedStory, setSelectedStory] = useState({})
 // const [chapter, setChapter] = useState([])
@@ -20,8 +21,9 @@ const params = useParams()
 // console.log(story[params.id].title)
 
 const displayStory = story.find(oneStory => (oneStory.id == params.id))
-console.log('displayStory',displayStory.id)
-const id = displayStory.id
+console.log('displayStory id',displayStory.id)
+console.log(displayStory, 'displayStory')
+// const id = displayStory.id
 // setId(displayStory.id)
 // setSelectedStory(diplayStory)
 // console.log("Check single story: " , selectedStory)
@@ -35,8 +37,15 @@ const id = displayStory.id
 //     // <p>{chapter.body}</p>,
 //     // )
 // })
-function handleDelete() {
-    debugger
+function handleDelete(displayStory) {
+    const id = displayStory.id
+    // console.log(displayStory)
+    // const id = displayStory.find(displayStory => (displayStory.id == story.id))
+    // console.log(id)
+
+    // debugger
+
+
     fetch(`/stories/${id}`, {
         method: "DELETE",
     })
@@ -56,7 +65,7 @@ return(
             <p>{displayStory?.styles[0]?.style}</p>
             <br></br>
             <div>
-               <button onClick={handleDelete}>Delete</button> 
+               <button onClick={() => {handleDelete(displayStory) }}>Delete</button> 
             </div>
             <br></br>
             <p>{displayStory?.chapters[0]?.title}</p>
