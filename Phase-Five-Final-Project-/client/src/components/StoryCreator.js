@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 
-function StoryCreator({ login, onAdd, user}) {
+function StoryCreator({ login, onAdd, user,story}) {
 const [story_name, setStory_name] = useState("")
 const [author, setAuthor] = useState("")
 const [age_group, setAge_group] =useState("")
@@ -37,7 +37,7 @@ const handleSubmitStory = (event) => {
       .then(onAdd)
       
     // console.log(login.user)
-    // console.log(storyObject)
+    console.log(storyObject)
 }
 
 
@@ -64,14 +64,14 @@ return(
             placeholder="genre"
             type="text"
             name="genre"
-            value={genre}
+            value={story.genre}
             onChange={(e) => setGenre(e.target.value)}
         />
           <input
             placeholder="style"
             type="text"
             name="style"
-            value={style}
+            value={story.style}
             onChange={(e) => setStyle(e.target.value)}
           />
              
@@ -79,7 +79,7 @@ return(
             placeholder="chapter_title"
             type="text"
             name="title"
-            value={title}
+            value={story.title}
             onChange={(e) => setTitle(e.target.value)}
           />
 
@@ -87,7 +87,7 @@ return(
             placeholder="chapter_number"
             type="integer"
             name="chapter_number"
-            value={chapter_number}
+            value={story.chapter_number}
             onChange={(e) => setChapter_number(e.target.value)}
           />
 
@@ -95,7 +95,7 @@ return(
             placeholder="body"
             type="text"
             name="body"
-            value={body}
+            value={story.body}
             onChange={(e) => setBody(e.target.value)}
           />
         

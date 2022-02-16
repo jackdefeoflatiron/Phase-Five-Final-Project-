@@ -33,5 +33,8 @@ class ApplicationController < ActionController::Base
       return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
     end
  
-    
+    def render_unprocessable_entity_response(record)
+      return 
+      render json: {errors: record.record.errors.full_messages }, status: 401
+    end 
 end

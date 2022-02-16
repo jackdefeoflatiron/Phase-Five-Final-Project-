@@ -3,18 +3,19 @@ import {Link, useHistory} from 'react-router-dom'
 
 
 
-function logout ({handleLogout}) {
-    const history = useHistory()
+function logout ({handleLogout, setLogin, login }) {
+    // const history = useHistory()
 
 
     // const redirect = () => {
     //     history.push('/')
     //   }
-
+console.log(handleLogout, 'testing')
+// console.log(login)
 
       return (
           <div>
-            <button placeholder="click" type="click" onClick={handleLogout}>
+            <button placeholder="Logout" type="click" onClick={handleLogout}>
                   Logout
             </button>
             <br></br>

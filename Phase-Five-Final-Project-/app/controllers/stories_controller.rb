@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
     
     def index
         stories = Story.all
-        render json: stories, status: :ok
+        render json: stories, status: :ok, each_serializer: StoriesSerializer
     end 
 
     def show
@@ -33,6 +33,9 @@ class StoriesController < ApplicationController
     private 
     def find_story
         Story.find(params[:story_name, :author, :age_group])
+        Style.find(params[:id])
+        Genre.find(params[:id])
+        Chapter.find(params[:id])
     end
 
     def story_params

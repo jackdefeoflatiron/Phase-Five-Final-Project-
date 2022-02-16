@@ -35,6 +35,7 @@ fetch('/users', {
 )
   .then(response => response.json())
   .then(response => {
+    
       if (response.data.status === 'created') {
           handleLogin(response.data)
         redirect()

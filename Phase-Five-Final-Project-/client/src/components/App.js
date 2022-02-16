@@ -21,12 +21,14 @@ import Logout from './Logout';
 
 
 
-function App() {
+function App({user}) {
 const [logout, setLogout] = useState(false)
 const [story, setAllStories] = useState([])
 const [searchStories, setSearchStories] = useState("")
 const [login, setLogin] = useState(false)
 
+// console.log(login)
+// console.log(user)
 
 
 
@@ -41,18 +43,19 @@ useEffect(()=> {
         } else {
           // setErrors(data.errors)
         }
-        console.log(data)  
+        // console.log(data)  
   })
   
 },[])
 
 // console.log(login)
-// console.log(story)
+
 useEffect(() => {
   fetch("/stories")
   .then(res => res.json())
   .then(data => setAllStories(data))
 },[])
+
 // useEffect(() => {
 //   fetch("/styles")
 //   .then(res => res.json())
@@ -71,10 +74,9 @@ const handleLogin = (data) => {
     })
   } 
 const handleLogout = () => {
-    setLogout({
-    isLoggedIn: false,
-    user: {}
-    })
+    setLogin(
+      false
+    )
   }
 
 const displayStory = story.filter((story) => {
@@ -118,7 +120,7 @@ const loginStatus = () => {
             <SignUp handleLogin={handleLogin}/>
             </Route>
             <Route path='/logout'>
-                <Logout handleLogout={handleLogout} />
+                <Logout handleLogout={handleLogout} setLogin={setLogin}/>
               </Route>
               <Route path='/user'>
                 <User  user={login.user}  story={story} />
