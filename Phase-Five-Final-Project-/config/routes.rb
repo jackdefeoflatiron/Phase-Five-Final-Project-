@@ -13,9 +13,12 @@ Rails.application.routes.draw do
 post '/users',         to: 'users#create'
 get '/users/:user_id', to: 'users#show'
 post '/user-login',    to: 'sessions#create'
+# delete "/logout",      to: "sessions#destroy"
 get '/users-session',  to: 'sessions#is_logged_in?'
 get '/users',          to: 'users#index'
+# destroy '/stories' to: 'stories#destroy' 
 # post '/story-create'    to: 'stories#create'
+
 
 resources :users, only: [:create, :show, :index] do 
   resources :items, only: [:create, :show, :index, :destroy]

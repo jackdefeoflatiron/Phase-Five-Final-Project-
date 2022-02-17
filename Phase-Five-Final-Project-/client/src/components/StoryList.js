@@ -4,7 +4,8 @@ import StoryPreview from './StoryPreview'
 
 
 function StoryList({allStories, user, login,  onDeleteStory}) {
-console.log(allStories)
+
+    console.log(onDeleteStory)
     return(
         <div> 
 {/* <BrowserRouter>

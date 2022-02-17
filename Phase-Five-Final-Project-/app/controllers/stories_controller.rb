@@ -6,7 +6,7 @@ class StoriesController < ApplicationController
     end 
 
     def show
-        stories = find_story
+        stories = Story.find( params[:id])
         render json: stories
     end 
 
@@ -17,7 +17,6 @@ class StoriesController < ApplicationController
     end 
 
     def create 
-        
         story = Story.create!(story_params)
         genre = story.genres.create!(genre_params)
         style = story.styles.create!(style_params)
@@ -27,8 +26,8 @@ class StoriesController < ApplicationController
     end 
 
     def destroy
-        stories = find_story
-        stories.destroy 
+        story = Story.find( params[:id])
+        story.destroy 
         head :no_content
     end 
     private 

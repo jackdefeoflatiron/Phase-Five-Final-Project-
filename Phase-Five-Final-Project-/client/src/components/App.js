@@ -26,6 +26,7 @@ const [logout, setLogout] = useState(false)
 const [allStories, setAllStories] = useState([])
 const [searchStories, setSearchStories] = useState("")
 const [login, setLogin] = useState(false)
+// const [isDeleted, setIsDelete] = useState(false)
 
 // console.log(login)
 // console.log(user)
@@ -106,12 +107,15 @@ const loginStatus = () => {
 }
 
 function onDeleteStory(id) {
+  console.log(id)
+  console.log(allStories)
   const updatedStoriesArray = allStories.filter(
     (allStories) => allStories.id !== id
   );
+  console.log(updatedStoriesArray)
   setAllStories(updatedStoriesArray);
+
 }
- 
     return (
 
 
@@ -136,7 +140,7 @@ function onDeleteStory(id) {
               <StoryCreator onAdd={handleAddStories}  allStories={allStories}  login={login}/>
               </Route>
               <Route path='/story/:id'>
-              <StoryDisplay onDeleteStory={onDeleteStory} allStories={allStories} />
+              <StoryDisplay  onDeleteStory={onDeleteStory} allStories={allStories} />
               </Route>
             <Route path='/'>
               <Home/>
