@@ -9,7 +9,7 @@ function User({user, genre, style, login}) {
             <Link to='/home'> Main Page</Link>
             <Link to='/user'></Link>
            <h1>{user.username}</h1>
-           <p>{user.profile_picture}</p>
+           <img src={user.profile_picture}></img>
            <p>{user.bio}</p>
            <p>{user.email_address}</p>
            <button placeholder="submit" type="submit">

@@ -23,7 +23,7 @@ import Logout from './Logout';
 
 function App({user}) {
 const [logout, setLogout] = useState(false)
-const [story, setAllStories] = useState([])
+const [allStories, setAllStories] = useState([])
 const [searchStories, setSearchStories] = useState("")
 const [login, setLogin] = useState(false)
 
@@ -79,9 +79,9 @@ const handleLogout = () => {
     )
   }
 
-const displayStory = story.filter((story) => {
+const displayStory = allStories.filter((allStories) => {
   if (searchStories === "") return true; 
-  return story.title.toUpperCase().includes(searchStories.toUpperCase())
+  return allStories.title.toUpperCase().includes(searchStories.toUpperCase())
 })
 
 
@@ -102,7 +102,14 @@ const loginStatus = () => {
   };
 
   function handleAddStories(addedStory) {
-  setAllStories((story) => [...story, addedStory]);
+  setAllStories((allStories) => [...allStories, addedStory]);
+}
+
+function onDeleteStory(id) {
+  const updatedStoriesArray = allStories.filter(
+    (allStories) => allStories.id !== id
+  );
+  setAllStories(updatedStoriesArray);
 }
  
     return (
@@ -123,20 +130,20 @@ const loginStatus = () => {
                 <Logout handleLogout={handleLogout} setLogin={setLogin}/>
               </Route>
               <Route path='/user'>
-                <User  user={login.user}  story={story} />
+                <User  user={login.user}  allStories={allStories} />
               </Route>
               <Route path='/storycreator'>
-              <StoryCreator onAdd={handleAddStories}  story={story}  login={login}/>
+              <StoryCreator onAdd={handleAddStories}  allStories={allStories}  login={login}/>
               </Route>
               <Route path='/story/:id'>
-              <StoryDisplay  story={story} />
+              <StoryDisplay onDeleteStory={onDeleteStory} allStories={allStories} />
               </Route>
             <Route path='/'>
               <Home/>
               </Route>
           </Switch>
           <StoryListContainer 
-        story={story}
+        allStories={allStories} onDeleteStory={onDeleteStory}
         />
         </BrowserRouter>
         

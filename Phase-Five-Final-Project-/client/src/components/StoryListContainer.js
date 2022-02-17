@@ -3,13 +3,16 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import StoryList from './StoryList'
 
 
-function StoryListContainer({story, user, login}) {
-    // console.log(story)
+function StoryListContainer({allStories, user, login, onDeleteStory}) {
+    console.log(allStories)
+
+    
+
 return(
     <div>
         <header as='h1'style={{ fontWeight: "lighter" }}>
             Newest Stories{" "}
-            <StoryList story={story}></StoryList>
+            <StoryList onDeleteStory={onDeleteStory} allStories={allStories}></StoryList>
         </header>
 
     </div>

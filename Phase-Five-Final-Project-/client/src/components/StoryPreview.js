@@ -3,18 +3,18 @@ import StoryDisplayer from './StoryDisplay'
 import {BrowserRouter, Switch, Route,  Link } from 'react-router-dom'
 
 
-function StoryPreview({story, user, login}) {
+function StoryPreview({allStories, user, login}) {
 
-// console.log(story)
+console.log(allStories)
     return(
         <div>
 
         <l1>
-            <Link story={story} to={`/story/${story.id}`}> {story.story_name}</Link>
-            <p>{story.author}</p>
-            <p>{story.age_group}</p>
-            <p>{story.genre}</p>
-            <p>{story.style}</p>
+            <Link allStories={allStories} to={`/story/${allStories.id}`}> {allStories.story_name}</Link>
+            <p>{allStories.author}</p>
+            <p>{allStories.age_group}</p>
+            <p>{allStories.genre}</p>
+            <p>{allStories.style}</p>
         </l1>
     </div>
     )

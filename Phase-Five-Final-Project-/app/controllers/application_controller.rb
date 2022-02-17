@@ -37,4 +37,8 @@ class ApplicationController < ActionController::Base
       return 
       render json: {errors: record.record.errors.full_messages }, status: 401
     end 
+
+    def render_not_found_response
+      render json: { error: "Object not found" }, status: :not_found
+    end
 end

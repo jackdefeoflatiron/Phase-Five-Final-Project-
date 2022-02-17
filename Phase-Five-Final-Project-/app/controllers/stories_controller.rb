@@ -28,14 +28,15 @@ class StoriesController < ApplicationController
 
     def destroy
         stories = find_story
-        stories.destory 
+        stories.destroy 
+        head :no_content
     end 
     private 
     def find_story
-        Story.find(params[:story_name, :author, :age_group])
-        Style.find(params[:id])
-        Genre.find(params[:id])
-        Chapter.find(params[:id])
+        Story.find(params[:story_id])
+        Style.find(params[:story_id])
+        Genre.find(params[:story_id])
+        Chapter.find(params[:story_id])
     end
 
     def story_params
