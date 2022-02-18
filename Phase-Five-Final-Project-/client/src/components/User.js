@@ -1,15 +1,39 @@
 import React from 'react'
 import {Link, BrowserRouter, Switch, Route} from 'react-router-dom'
+import UserEditor from '/UserEditor'
 
 function User({user, genre, style, login}) {
 
 function handleDeleteUser() {
+  
 console.log(user.id)
 let id = user.id
   fetch(`users/${id}`, {
     method: 'DELETE'
   })
   .then((res) => res.json())
+}
+
+function handleEditUser() {
+
+  let id = user.id
+
+  let editedUser = {
+    username: user.username,
+    profile_picture:  user.profile_picture,
+    bio: user.bio,
+    email_address: user.email_address,
+    password: user.password,
+    password_conformation: user.password_conformation
+  }
+  fetch(`users/${id}`, {
+    method: "PATCH",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify(editedUser)
+  })
 }
 
 
@@ -25,7 +49,8 @@ let id = user.id
            <button placeholder="submit" type="submit">
             <Link to='/storycreator'>Create New Story</Link>
           </button>
-          
+          <button handleEditUser={handleEditUser}>
+          <Link to='/usereditor'>Edit User </Link></button> 
           <button onClick={handleDeleteUser}> 
           <Link to='/home'>Delete User</Link> 
           </button>
