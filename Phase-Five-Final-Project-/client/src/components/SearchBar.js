@@ -2,9 +2,9 @@ import React from  'react'
 
 
 
-function Searchbar ({searchStories,onchangeSearch}) {
+function Searchbar ({searchStories,onChangeSearch}) {
     const handleSearch = (e) => {
-        onchangeSearch(e.target.value)
+        onChangeSearch(e.target.value)
       }
       return (
         <div className="filter">

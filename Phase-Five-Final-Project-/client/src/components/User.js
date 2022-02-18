@@ -3,6 +3,16 @@ import {Link, BrowserRouter, Switch, Route} from 'react-router-dom'
 
 function User({user, genre, style, login}) {
 
+function handleDeleteUser() {
+console.log(user.id)
+let id = user.id
+  fetch(`users/${id}`, {
+    method: 'DELETE'
+  })
+  .then((res) => res.json())
+}
+
+
  console.log(user)
     return(
         <div>
@@ -14,7 +24,10 @@ function User({user, genre, style, login}) {
            <p>{user.email_address}</p>
            <button placeholder="submit" type="submit">
             <Link to='/storycreator'>Create New Story</Link>
-
+          </button>
+          
+          <button onClick={handleDeleteUser}> 
+          <Link to='/home'>Delete User</Link> 
           </button>
 
 

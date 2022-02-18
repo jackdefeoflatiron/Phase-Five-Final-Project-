@@ -14,7 +14,7 @@ const [body, setBody]  = useState("")
 let history = useHistory()
 
 
-const handleSubmitStory = (event) => {
+const handleSubmitStory = async (event) => {
     event.preventDefault()
     const storyObject = {
         story_name: story_name,
@@ -27,7 +27,7 @@ const handleSubmitStory = (event) => {
         chapter_number: chapter_number,
         body: body,
     };
-    fetch('/stories', {
+    await fetch('/stories', {
         method : 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const handleSubmitStory = (event) => {
       .then(onAdd)
       .then(console.log(storyObject))
       
-      // .then(history.push(`/story/${storyObject.id}`))
+      response = await fetch(Promise.then(history.push(`/story/${storyObject.id}`)))
       
       
     // console.log(login.user)

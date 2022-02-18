@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import React, { Component, useState, useEffect } from 'react';
 // import axios from 'axios'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route, useHistory} from 'react-router-dom'
 import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
@@ -26,11 +26,11 @@ const [logout, setLogout] = useState(false)
 const [allStories, setAllStories] = useState([])
 const [searchStories, setSearchStories] = useState("")
 const [login, setLogin] = useState(false)
-// const [isDeleted, setIsDelete] = useState(false)
+const [isDeleted, setIsDelete] = useState(false)
 
 // console.log(login)
 // console.log(user)
-
+let history = useHistory()
 
 
 useEffect(()=> {
@@ -74,11 +74,11 @@ const handleLogin = (data) => {
       user: data.user
     })
   } 
-const handleLogout = () => {
-    setLogin(
-      false
-    )
-  }
+// const handleLogout = () => {
+ 
+//    setLogin(false)
+    
+//   }
 
 const displayStory = allStories.filter((allStories) => {
   if (searchStories === "") return true; 
@@ -96,7 +96,7 @@ const loginStatus = () => {
       if (response.data.logged_in) {
         handleLogin(response)
       } else {
-        handleLogout()
+        setLogin(false)
       }
     })
     .catch(error => console.log('api errors:', error))
@@ -120,7 +120,7 @@ function onDeleteStory(id) {
 
 
       <div>
-      <Header onchangeSearch={setSearchStories} searchStories={searchStories}/>  
+      <Header onChangeSearch={setSearchStories} searchStories={searchStories}/>  
           <BrowserRouter>
           <Switch>
             <Route  path='/login'>
@@ -131,7 +131,7 @@ function onDeleteStory(id) {
             <SignUp handleLogin={handleLogin}/>
             </Route>
             <Route path='/logout'>
-                <Logout handleLogout={handleLogout} setLogin={setLogin}/>
+                <Logout setLogin={setLogin} />
               </Route>
               <Route path='/user'>
                 <User  user={login.user}  allStories={allStories} />

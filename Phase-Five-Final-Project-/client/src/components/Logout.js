@@ -3,16 +3,14 @@ import {Link, useHistory} from 'react-router-dom'
 
 
 
-function logout ({handleLogout, setLogin, login }) {
-    // const history = useHistory()
+function Logout ({setLogin, login }) {
 
+let history = useHistory();
 
-    // const redirect = () => {
-    //     history.push('/')
-    //   }
-console.log(handleLogout, 'testing')
-// console.log(login)
-
+ const handleLogout = () => {
+   setLogin(false)
+ history.push("/home")
+  }
       return (
           <div>
             <button placeholder="Logout" type="click" onClick={handleLogout}>
@@ -25,4 +23,4 @@ console.log(handleLogout, 'testing')
       )
 }
 
-export default logout
+export default Logout

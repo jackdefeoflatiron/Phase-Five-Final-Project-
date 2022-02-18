@@ -15,7 +15,7 @@ console.log(displayStory.id)
 console.log(allStories)
 
 
-function handleDelete() {
+async function handleDelete() {
     const displayStory = allStories.find(oneStory => (oneStory.id == params.id))
     const id = displayStory.id
     console.log(id)
@@ -27,9 +27,9 @@ console.log("its the id", id)
     .then((r) => r.json())
     .then(() => {
         onDeleteStory(id)
-        // setIsDelete(!isDelete)
+        setIsDelete(!isDelete)
     })
-    .then(history.push("/home"))
+    response = await fetch(Promise.then(history.push("/home")))
 }
 
 // Baseline edit function
