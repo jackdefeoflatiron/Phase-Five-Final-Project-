@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link, BrowserRouter, Switch, Route} from 'react-router-dom'
-import UserEditor from '/UserEditor'
+import UserEditor from './UserEditor'
 
 function User({user, genre, style, login}) {
 
@@ -14,27 +14,27 @@ let id = user.id
   .then((res) => res.json())
 }
 
-function handleEditUser() {
+// function handleEditUser() {
 
-  let id = user.id
+//   let id = user.id
 
-  let editedUser = {
-    username: user.username,
-    profile_picture:  user.profile_picture,
-    bio: user.bio,
-    email_address: user.email_address,
-    password: user.password,
-    password_conformation: user.password_conformation
-  }
-  fetch(`users/${id}`, {
-    method: "PATCH",
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-    body: JSON.stringify(editedUser)
-  })
-}
+//   let editedUser = {
+//     username: user.username,
+//     profile_picture:  user.profile_picture,
+//     bio: user.bio,
+//     email_address: user.email_address,
+//     password: user.password,
+//     password_conformation: user.password_conformation
+//   }
+//   fetch(`users/${id}`, {
+//     method: "PATCH",
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Accept': 'application/json',
+//     },
+//     body: JSON.stringify(editedUser)
+//   })
+// }
 
 
  console.log(user)
@@ -47,11 +47,12 @@ function handleEditUser() {
            <p>{user.bio}</p>
            <p>{user.email_address}</p>
            <button placeholder="submit" type="submit">
-            <Link to='/storycreator'>Create New Story</Link>
+          <Link to='/storycreator'>Create New Story</Link>
           </button>
-          <button handleEditUser={handleEditUser}>
-          <Link to='/usereditor'>Edit User </Link></button> 
-          <button onClick={handleDeleteUser}> 
+          <button type='submit'>
+          <Link to='/usereditor'>Edit User</Link>
+          </button> 
+          <button type='submit' onClick={handleDeleteUser}> 
           <Link to='/home'>Delete User</Link> 
           </button>
 

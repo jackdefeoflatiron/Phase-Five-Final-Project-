@@ -14,7 +14,7 @@ import StoryCreator from './StoryCreator';
 import StoryList from './StoryList';
 import StoryDisplay from './StoryDisplay';
 import Logout from './Logout';
-import UserEditor from '/UserEditor'
+import UserEditor from './UserEditor'
 
 
 
@@ -105,6 +105,7 @@ const loginStatus = () => {
 
   function handleAddStories(addedStory) {
   setAllStories((allStories) => [...allStories, addedStory]);
+  return addedStory
 }
 
 function onDeleteStory(id) {
@@ -126,30 +127,40 @@ function onDeleteStory(id) {
           <Switch>
             <Route  path='/login'>
               <Login handleLogin={handleLogin} />
-              </Route>
+            </Route>
             
             <Route path='/signup'>
-            <SignUp handleLogin={handleLogin}/>
+              <SignUp handleLogin={handleLogin}/>
             </Route>
+            
             <Route path='/logout'>
-                <Logout setLogin={setLogin} />
-              </Route>
-              <Route path='/user'>
-                <User  user={login.user}  allStories={allStories} />
-              </Route>
-              <Route path='/storycreator'>
+              <Logout setLogin={setLogin} />
+            </Route>
+            
+            <Route path='/user'>
+              <User  user={login.user}  allStories={allStories} />
+            </Route>
+            
+            <Route path='/storycreator'>
               <StoryCreator onAdd={handleAddStories}  allStories={allStories}  login={login}/>
-              </Route>
-              <Route path='/story/:id'>
+            </Route>
+            
+            <Route path='/story/:id'>
               <StoryDisplay  onDeleteStory={onDeleteStory} allStories={allStories} />
-              </Route>
+            </Route>
+            
+            <Route path='/usereditor'>
+              <UserEditor login={login} user={login.user}/>
+            </Route>
+
             <Route path='/'>
               <Home/>
-              </Route>
+            </Route>
           </Switch>
           <StoryListContainer 
         allStories={allStories} onDeleteStory={onDeleteStory}
         />
+        
         </BrowserRouter>
         
       </div>

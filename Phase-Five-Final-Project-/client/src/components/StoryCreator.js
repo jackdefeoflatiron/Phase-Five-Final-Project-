@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Link, useHistory } from 'react-router-dom';
 
-function StoryCreator({ login, onAdd, user, allStories}) {
+function StoryCreator({ login, onAdd, user, allstories}) {
 const [story_name, setStory_name] = useState("")
 const [author, setAuthor] = useState("")
 const [age_group, setAge_group] =useState("")
@@ -35,11 +35,12 @@ const handleSubmitStory = async (event) => {
         },
         body: JSON.stringify(storyObject),
       })
+      // function getStoryObjectId () {
+      //   return (
       .then((res)=> res.json())
       .then(onAdd)
-      .then(console.log(storyObject))
-      
-      response = await fetch(Promise.then(history.push(`/story/${storyObject.id}`)))
+      .then(setTimeout((addedStory)=> history.push(`/story/${addedStory.id}`)))
+        // )}
       
       
     // console.log(login.user)
@@ -70,14 +71,14 @@ return(
             placeholder="genre"
             type="text"
             name="genre"
-            value={allStories.genre}
+            value={allstories.genre}
             onChange={(e) => setGenre(e.target.value)}
         />
           <input
             placeholder="style"
             type="text"
             name="style"
-            value={allStories.style}
+            value={allstories.style}
             onChange={(e) => setStyle(e.target.value)}
           />
              
@@ -85,7 +86,7 @@ return(
             placeholder="chapter_title"
             type="text"
             name="title"
-            value={allStories.title}
+            value={allstories.title}
             onChange={(e) => setTitle(e.target.value)}
           />
 
@@ -93,7 +94,7 @@ return(
             placeholder="chapter_number"
             type="integer"
             name="chapter_number"
-            value={allStories.chapter_number}
+            value={allstories.chapter_number}
             onChange={(e) => setChapter_number(e.target.value)}
           />
 
@@ -101,7 +102,7 @@ return(
             placeholder="body"
             type="text"
             name="body"
-            value={allStories.body}
+            value={allstories.body}
             onChange={(e) => setBody(e.target.value)}
           />
         

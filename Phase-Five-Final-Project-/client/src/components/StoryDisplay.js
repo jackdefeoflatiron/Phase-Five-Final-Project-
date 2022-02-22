@@ -29,7 +29,7 @@ console.log("its the id", id)
         onDeleteStory(id)
         setIsDelete(!isDelete)
     })
-    response = await fetch(Promise.then(history.push("/home")))
+    .then(history.push("/home"))
 }
 
 // Baseline edit function

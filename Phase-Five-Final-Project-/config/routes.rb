@@ -18,6 +18,7 @@ get '/users-session',  to: 'sessions#is_logged_in?'
 get '/users',          to: 'users#index'
 # destroy '/stories' to: 'stories#destroy' 
 # post '/story-create'    to: 'stories#create'
+get '/usereditor',     to: 'users#update'
 
 
 resources :users, only: [:create, :show, :index] do 

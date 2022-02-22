@@ -1,21 +1,45 @@
 import Reach, {useState} from 'react'
+import { useHistory, Link } from 'react-router-dom'
 
 
 
-function UserEditor(handleEditUser) {
-    const history = useHistory()
+function UserEditor({handleEditUser, user, login}) {
+    // const history = useHistory()
     const [userUsername, setUserUsername] = useState("")
     const [userEmail_address, setUserEmail_address] = useState("")
     const [userPassword, setUserPassword] =useState("")
     const [userPassword_confirmation, setUserPassword_conformation] =useState("")
     const [userBio, setUserBio] =useState("")
     const [userProfile_picture, setUserProfile_picture] =useState("")
+console.log(user)
+console.log(login.user)
 
+    function handleEditUser() {
+
+        let id = user.id
+      
+        let editedUser = {
+          userUsername: user.username,
+          userProfile_picture:  user.profile_picture,
+          userBio: user.bio,
+          userEmail_address: user.email_address,
+          userPassword: user.password,
+          userPassword_conformation: user.password_conformation
+        }
+        fetch(`users/${id}`, {
+          method: "PATCH",
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify(editedUser)
+        })
+      }
 
 return (
     <div>
         <h1>Edit Profile</h1>        
-<form onSubmit={(e)=> handleEditUser()}>
+<form onSubmit={handleEditUser}>
           <input
             placeholder="username"
             type="text"
@@ -62,9 +86,13 @@ return (
           />
         
           <button placeholder="submit" type="submit">
-            Edit Profile
+            Save Edits 
           </button>
           </form>
+          <button>
+          <Link to='/home'>Cancel</Link>
+          </button>
     </div>
 )
 }
+ export default UserEditor
