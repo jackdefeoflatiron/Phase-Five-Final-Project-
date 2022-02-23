@@ -55,7 +55,12 @@ useEffect(()=> {
 useEffect(() => {
   fetch("/stories")
   .then(res => res.json())
+  .then(res => {
+    console.log(res)
+    return res
+  })
   .then(data => setAllStories(data))
+
 },[])
 
 // useEffect(() => {

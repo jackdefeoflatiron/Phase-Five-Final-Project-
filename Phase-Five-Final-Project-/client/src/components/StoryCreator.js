@@ -71,14 +71,14 @@ return(
             placeholder="genre"
             type="text"
             name="genre"
-            value={allstories.genre}
+            value={genre}
             onChange={(e) => setGenre(e.target.value)}
         />
           <input
             placeholder="style"
             type="text"
             name="style"
-            value={allstories.style}
+            value={style}
             onChange={(e) => setStyle(e.target.value)}
           />
              
@@ -86,7 +86,7 @@ return(
             placeholder="chapter_title"
             type="text"
             name="title"
-            value={allstories.title}
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
 
@@ -94,7 +94,7 @@ return(
             placeholder="chapter_number"
             type="integer"
             name="chapter_number"
-            value={allstories.chapter_number}
+            value={chapter_number}
             onChange={(e) => setChapter_number(e.target.value)}
           />
 
@@ -102,7 +102,7 @@ return(
             placeholder="body"
             type="text"
             name="body"
-            value={allstories.body}
+            value={body}
             onChange={(e) => setBody(e.target.value)}
           />
         

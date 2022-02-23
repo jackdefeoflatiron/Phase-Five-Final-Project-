@@ -14,17 +14,19 @@ function UserEditor({handleEditUser, user, login}) {
 console.log(user)
 console.log(login.user)
 
+let history = useHistory()
+
     function handleEditUser() {
 
         let id = user.id
       
         let editedUser = {
-          userUsername: user.username,
-          userProfile_picture:  user.profile_picture,
-          userBio: user.bio,
-          userEmail_address: user.email_address,
-          userPassword: user.password,
-          userPassword_conformation: user.password_conformation
+          userUsername: userUsername,
+          userProfile_picture:  userProfile_picture,
+          userBio: userBio,
+          userEmail_address: userEmail_address,
+          userPassword: userPassword,
+          userPassword_conformation: userPassword_confirmation
         }
         fetch(`users/${id}`, {
           method: "PATCH",
@@ -34,6 +36,8 @@ console.log(login.user)
           },
           body: JSON.stringify(editedUser)
         })
+        .then(history.push("/home"))
+        console.log(editedUser)
       }
 
 return (
@@ -44,28 +48,28 @@ return (
             placeholder="username"
             type="text"
             name="username"
-            value={user.userUsername}
+            value={userUsername}
             onChange={(e) => setUserUsername(e.target.value)}
           />
           <input
             placeholder="email"
             type="text"
             name="email"
-            value={user.userEmail_address}
+            value={userEmail_address}
             onChange={(e) => setUserEmail_address(e.target.value)}
           />
           <input 
             placeholder="password"
             type="password"
             name="password"
-            value={user.userPassword}
+            value={userPassword}
             onChange={(e) => setUserPassword(e.target.value)}
           />          
           <input
             placeholder="password confirmation"
             type="password"
             name="password_confirmation"
-            value={user.userPassword_confirmation}
+            value={userPassword_confirmation}
             onChange={(e) => setUserPassword_conformation(e.target.value)}
           />
 
@@ -73,7 +77,7 @@ return (
             placeholder="Bio"
             type="Bio"
             name="Bio"
-            value={user.userBio}
+            value={userBio}
             onChange={(e) => setUserBio(e.target.value)}
           />
 
@@ -81,7 +85,7 @@ return (
             placeholder="ProfilePicture"
             type="ProfilePicture"
             name="ProfilePicture"
-            value={user.userProfile_picture}
+            value={userProfile_picture}
             onChange={(e) => setUserProfile_picture(e.target.value)}
           />
         
