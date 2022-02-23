@@ -89,7 +89,7 @@ return (
             onChange={(e) => setUserProfile_picture(e.target.value)}
           />
         
-          <button placeholder="submit" type="submit">
+          <button type="submit">
             Save Edits 
           </button>
           </form>

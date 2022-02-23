@@ -30,6 +30,7 @@ console.log("its the id", id)
         setIsDelete(!isDelete)
     })
     .then(history.push("/home"))
+    
 }
 
 // const loggedIn = login.user.id === displayStory.user.id 
@@ -45,7 +46,9 @@ return(
             <br></br>
             <div >
                <button onClick={handleDelete}>Delete</button> 
-               <Link to='/storyeditor'>Edit Story</Link>
+               <button>
+                <Link to='/storyeditor'>Edit Story</Link>
+               </button>
             </div>
             <br></br>
             <p>{displayStory?.chapters[0]?.title}</p>

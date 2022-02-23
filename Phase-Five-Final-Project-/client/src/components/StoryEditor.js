@@ -5,20 +5,29 @@ import {BrowserRouter, Switch, Route, Link, useParams, useHistory} from 'react-r
 
 function StoryEditor({allStories, login, user, displayStory}) {
 
+    
+    const [displayStoryStory_name, setDisplayStoryStory_name] =useState("")
+    const [displayStoryAuthor, setDisplayStoryAuthor] = useState("")
+    const [displayStoryAge_group, setDisplayStoryAge_group] = useState("")
+    const [displayStoryGenres, setDisplayStoryGenres] =  useState("")
+    const [displayStoryChapter_number, setDisplayStoryChapter_number] =useState("")
+    const [displayStoryBody, setDisplayStoryBody] = useState("")
+    const [displayStoryStyles, setDisplayStoryStyles] = useState("")
+    const [displayStoryTitle, setDisplayStoryTitle] = useState("")
 
-
-    const paras
+    const history = useHistory();
+    const params = useParams();
 // Baseline edit function
 function handleEdit(displayStory) {
     const id = displayStory.id
-    const [displayStoryStory_name, setDisplayStoryStory_name] =useState(displayStory.story_name)
-    const [displayStoryAuthor, setDisplayStoryAuthor] = useState(displayStory.author)
-    const [displayStoryAge_group, setDisplayStoryAge_group] = useState(displayStory.age_group)
-    const [displayStoryGenres, setDisplayStoryGenres] =  useState(displayStory.title)
-    const [displayStoryChapter_number, setDisplayStoryChapter_number] =useState(displayStory.chapter_number)
-    const [displayStoryBody, setDisplayStoryBody] = useState(displayStory.body)
-    const [displayStoryStyles, setDisplayStoryStyles] = useState(displayStory.styles)
-    const [displayStoryTitle, setDisplayStoryTitle] = useState(displayStory.title)
+    // const [displayStoryStory_name, setDisplayStoryStory_name] =useState(displayStory.story_name)
+    // const [displayStoryAuthor, setDisplayStoryAuthor] = useState(displayStory.author)
+    // const [displayStoryAge_group, setDisplayStoryAge_group] = useState(displayStory.age_group)
+    // const [displayStoryGenres, setDisplayStoryGenres] =  useState(displayStory.title)
+    // const [displayStoryChapter_number, setDisplayStoryChapter_number] =useState(displayStory.chapter_number)
+    // const [displayStoryBody, setDisplayStoryBody] = useState(displayStory.body)
+    // const [displayStoryStyles, setDisplayStoryStyles] = useState(displayStory.styles)
+    // const [displayStoryTitle, setDisplayStoryTitle] = useState(displayStory.title)
 
   const saveChanges = (e) => {
     e.preventDefault();
@@ -41,33 +50,33 @@ function handleEdit(displayStory) {
         },
         body: JSON.stringify(editedStory),
       })
-      displayStory.story_name = displayStoryStory_name
-      displayStory.author = displayStoryAuthor
-      displayStory.age_group = displayStoryAge_group
-      displayStory.genres = displayStoryGenres
-      displayStory.styles = displayStoryStyles
-      displayStory.title = displayStoryTitle
-      displayStory.chapter_number = displayStoryChapter_number
-      displayStory.body = displayStoryBody
-      onCancel(false)
+      displayStoryStory_name = displayStory.story_name
+      displayStoryAuthor = displayStory.author
+      displayStoryAge_group = displayStory.age_group
+      displayStoryGenres = displayStory.genres
+      displayStoryStyles = displayStory.styles
+      displayStoryTitle = displayStory.title
+      displayStoryChapter_number = displayStory.chapter_number
+      displayStoryBody = displayStory.body
+    //   onCancel(false)
     }
-    const handleCancel = () => {
-      setDisplayStoryStory_name(displayStory.story_name)
-      setDisplayStoryAuthor(displayStory.author)
-      setDisplayStoryAge_group(displayStory.age_group)
-      setDisplayStoryGenres(displayStory.genres)
-      setDisplayStoryStyles(displayStory.styles)
-      setDisplayStoryTitle(displayStory.styles)
-      setDisplayStoryChapter_number(displayStory.chapter_number)
-      setDisplayStoryBody(displayStory.body)
-      onCancel(false)
-    }
+    // const handleCancel = () => {
+    //   setDisplayStoryStory_name(displayStory.story_name)
+    //   setDisplayStoryAuthor(displayStory.author)
+    //   setDisplayStoryAge_group(displayStory.age_group)
+    //   setDisplayStoryGenres(displayStory.genres)
+    //   setDisplayStoryStyles(displayStory.styles)
+    //   setDisplayStoryTitle(displayStory.styles)
+    //   setDisplayStoryChapter_number(displayStory.chapter_number)
+    //   setDisplayStoryBody(displayStory.body)
+    //   onCancel(false)
+    // }
 }
 
 
 
     return (
-        <form onSubmit={saveChanges()}>
+        <form onSubmit={handleEdit}>
         <input
           placeholder="story_name"
           type="text"
@@ -117,8 +126,8 @@ function handleEdit(displayStory) {
           placeholder="body"
           type="text"
           name="body"
-          value={displayStoryTitle}
-          onChange={(e) => displayStoryTitle(e.target.value)}
+          value={displayStoryBody}
+          onChange={(e) => setDisplayStoryBody(e.target.value)}
         />
       
         
@@ -126,8 +135,8 @@ function handleEdit(displayStory) {
           Save Edits
         </button>
 
-        <button placeholder="cancel" type='submit' onSubmit={handleCancel()}>
-            Cancel Edits
+        <button placeholder="cancel" type='submit' >
+            <Link to='/home'>  Cancel Edits</Link>
         </button>
     
       

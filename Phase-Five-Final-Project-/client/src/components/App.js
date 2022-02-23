@@ -15,6 +15,7 @@ import StoryList from './StoryList';
 import StoryDisplay from './StoryDisplay';
 import Logout from './Logout';
 import UserEditor from './UserEditor'
+import StoryEditor from './StoryEditor';
 
 
 
@@ -143,7 +144,7 @@ function onDeleteStory(id) {
             </Route>
             
             <Route path='/user'>
-              <User  user={login.user}  allStories={allStories} />
+              <User  handleLogin={handleLogin} user={login.user}  allStories={allStories} />
             </Route>
             
             <Route path='/storycreator'>
@@ -156,6 +157,10 @@ function onDeleteStory(id) {
             
             <Route path='/usereditor'>
               <UserEditor login={login} user={login.user}/>
+            </Route>
+
+            <Route path='/storyeditor'>
+              <StoryEditor allStories={allStories}/>
             </Route>
 
             <Route path='/'>

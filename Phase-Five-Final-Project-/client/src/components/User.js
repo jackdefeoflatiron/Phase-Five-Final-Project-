@@ -2,16 +2,20 @@ import React from 'react'
 import {Link, BrowserRouter, Switch, Route} from 'react-router-dom'
 import UserEditor from './UserEditor'
 
-function User({user, genre, style, login}) {
-
+function User({user, setLogin, isLoggedIn, genre, style, login, handleLogin}) {
+console.log(user.id)
+// console.log(login.user)
+console.log(handleLogin)
 function handleDeleteUser() {
-  
+console.log(isLoggedIn)
 console.log(user.id)
 let id = user.id
   fetch(`users/${id}`, {
     method: 'DELETE'
   })
   .then((res) => res.json())
+  .then(setLogin(isLoggedIn = false))
+  console.log(isLoggedIn)
 }
 
 // function handleEditUser() {
