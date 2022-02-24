@@ -13,7 +13,7 @@ function Header({onchangeSearch, setSearchStories, searchStories}) {
         <header as='h1'style={{ fontWeight: "lighter" }}>
             E-Writer{" "}
         </header>
-        <Searchbar onchangeSearch={setSearchStories} searchStories={searchStories}/>
+        {/* <Searchbar onchangeSearch={setSearchStories} searchStories={searchStories}/> */}
         </div>
     )
 }
