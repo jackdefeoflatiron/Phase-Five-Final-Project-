@@ -16,6 +16,7 @@ import StoryDisplay from './StoryDisplay';
 import Logout from './Logout';
 import UserEditor from './UserEditor'
 import StoryEditor from './StoryEditor';
+import UserViewer from './UserViewer';
 
 
 
@@ -164,7 +165,7 @@ function onDeleteStory(id) {
             </Route>
 
             <Route path='userviewer'>
-
+            <UserViewer user={user} allStories={allStories}/>
             </Route>
 
             <Route path='/'>
