@@ -3,14 +3,14 @@ import { useHistory, Link } from 'react-router-dom'
 
 
 
-function UserEditor({handleEditUser, user, login}) {
+function UserEditor({handleEditUser, user, login, }) {
     // const history = useHistory()
-    const [userUsername, setUserUsername] = useState("")
-    const [userEmail_address, setUserEmail_address] = useState("")
-    const [userPassword, setUserPassword] =useState("")
-    const [userPassword_confirmation, setUserPassword_conformation] =useState("")
-    const [userBio, setUserBio] =useState("")
-    const [userProfile_picture, setUserProfile_picture] =useState("")
+    const [userUsername, setUserUsername] = useState(user.username)
+    const [userEmail_address, setUserEmail_address] = useState(user.email_address)
+    const [userPassword, setUserPassword] =useState(user.password)
+    const [userPassword_confirmation, setUserPassword_conformation] =useState(user.password_confirmation)
+    const [userBio, setUserBio] =useState(user.bio)
+    const [userProfile_picture, setUserProfile_picture] =useState(user.profile_picture)
 console.log(user)
 console.log(login.user)
 
@@ -43,7 +43,7 @@ let history = useHistory()
 return (
     <div>
         <h1>Edit Profile</h1>        
-<form onSubmit={handleEditUser}>
+<form className='usereditor'>
           <input
             placeholder="username"
             type="text"
@@ -89,7 +89,7 @@ return (
             onChange={(e) => setUserProfile_picture(e.target.value)}
           />
         
-          <button type="submit">
+          <button onClick={(e)=>handleEditUser(e)} type="submit">
             Save Edits 
           </button>
           </form>

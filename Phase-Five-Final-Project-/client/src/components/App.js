@@ -160,7 +160,11 @@ function onDeleteStory(id) {
             </Route>
 
             <Route path='/storyeditor'>
-              <StoryEditor allStories={allStories}/>
+              <StoryEditor allStories={allStories} />
+            </Route>
+
+            <Route path='userviewer'>
+
             </Route>
 
             <Route path='/'>

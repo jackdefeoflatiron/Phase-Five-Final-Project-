@@ -3,23 +3,36 @@ import {BrowserRouter, Switch, Route, Link, useParams, useHistory} from 'react-r
 
 
 
-function StoryEditor({allStories, login, user, displayStory}) {
+function StoryEditor({allStories}) {
+    const params = useParams();
+    const history = useHistory();
+    const displayStory = allStories.find(oneStory => (oneStory.id == params.id))
+    // const displayStory = {
+    //     story_name: story_name,
+    //     author: login.user.username,
+    //     user_id: login.user.id,
+    //     age_group: age_group,
+    //     genre: genre,
+    //     style: style,
+    //     title: title,
+    //     chapter_number: chapter_number,
+    //     body: body,
+    // }
+    const [displayStoryStory_name, setDisplayStoryStory_name] =useState(displayStory.story_name)
+    // const [displayStoryAuthor, setDisplayStoryAuthor] = useState(displayStory.author)
+    const [displayStoryAge_group, setDisplayStoryAge_group] = useState(displayStory.age_group)
+    const [displayStoryGenres, setDisplayStoryGenres] =  useState(displayStory.genres)
+    const [displayStoryChapter_number, setDisplayStoryChapter_number] =useState(displayStory.chapter_number)
+    const [displayStoryBody, setDisplayStoryBody] = useState(displayStory.body)
+    const [displayStoryStyles, setDisplayStoryStyles] = useState(displayStory.styles)
+    const [displayStoryTitle, setDisplayStoryTitle] = useState(displayStory.title)
 
     
-    const [displayStoryStory_name, setDisplayStoryStory_name] =useState("")
-    const [displayStoryAuthor, setDisplayStoryAuthor] = useState("")
-    const [displayStoryAge_group, setDisplayStoryAge_group] = useState("")
-    const [displayStoryGenres, setDisplayStoryGenres] =  useState("")
-    const [displayStoryChapter_number, setDisplayStoryChapter_number] =useState("")
-    const [displayStoryBody, setDisplayStoryBody] = useState("")
-    const [displayStoryStyles, setDisplayStoryStyles] = useState("")
-    const [displayStoryTitle, setDisplayStoryTitle] = useState("")
-
-    const history = useHistory();
-    const params = useParams();
+    
+    
 // Baseline edit function
-function handleEdit(displayStory) {
-    const id = displayStory.id
+// function handleEdit(displayStory) {
+//     const id = displayStory.id
     // const [displayStoryStory_name, setDisplayStoryStory_name] =useState(displayStory.story_name)
     // const [displayStoryAuthor, setDisplayStoryAuthor] = useState(displayStory.author)
     // const [displayStoryAge_group, setDisplayStoryAge_group] = useState(displayStory.age_group)
@@ -34,7 +47,7 @@ function handleEdit(displayStory) {
     let editedStory = {
       userId: displayStory.userId,
       story_name: displayStoryStory_name,
-      author: displayStoryAuthor,
+    //   author: displayStoryAuthor,
       age_group: displayStoryAge_group,
       genres: displayStoryGenres,
       styles: displayStoryStyles,
@@ -42,7 +55,8 @@ function handleEdit(displayStory) {
       chapter_number: displayStoryChapter_number,
       body: displayStoryBody
     }
-    fetch(`/stories/${id}`, {
+    // const id = displayStory.id
+    fetch(`/story/${displayStory.id}`, {
         method: "PATCH",
         headers: {
           'Content-Type': 'application/json',
@@ -51,7 +65,7 @@ function handleEdit(displayStory) {
         body: JSON.stringify(editedStory),
       })
       displayStoryStory_name = displayStory.story_name
-      displayStoryAuthor = displayStory.author
+    //   displayStoryAuthor = displayStory.author
       displayStoryAge_group = displayStory.age_group
       displayStoryGenres = displayStory.genres
       displayStoryStyles = displayStory.styles
@@ -71,12 +85,12 @@ function handleEdit(displayStory) {
     //   setDisplayStoryBody(displayStory.body)
     //   onCancel(false)
     // }
-}
+// }
 
 
 
     return (
-        <form onSubmit={handleEdit}>
+        <form onSubmit={saveChanges}>
         <input
           placeholder="story_name"
           type="text"
@@ -132,7 +146,7 @@ function handleEdit(displayStory) {
       
         
       <button placeholder="submit" type="submit">
-          Save Edits
+          <Link to={`/story/${displayStory.id}`}>Save Edits </Link>
         </button>
 
         <button placeholder="cancel" type='submit' >

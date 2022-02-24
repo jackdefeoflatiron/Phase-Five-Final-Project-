@@ -13,6 +13,7 @@ function StoryList({allStories, user, login,  onDeleteStory}) {
         <Route path='/storydisplay'> */}
         {allStories.map((allStories)=>
             <StoryPreview
+            user={user}
             onDeleteStory={onDeleteStory}
             key={allStories.id}
             allStories={allStories}

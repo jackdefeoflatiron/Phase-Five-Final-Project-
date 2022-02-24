@@ -12,7 +12,7 @@ return(
     <div>
         <header as='h1'style={{ fontWeight: "lighter" }}>
             Newest Stories{" "}
-            <StoryList onDeleteStory={onDeleteStory} allStories={allStories}></StoryList>
+            <StoryList user={user} onDeleteStory={onDeleteStory} allStories={allStories}></StoryList>
         </header>
 
     </div>

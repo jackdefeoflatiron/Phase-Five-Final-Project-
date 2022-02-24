@@ -15,7 +15,7 @@ let history = useHistory()
 
 
 const handleSubmitStory =  (event) => {
-    event.preventDefault()
+    // event.preventDefault()
     const storyObject = {
         story_name: story_name,
         author: login.user.username,

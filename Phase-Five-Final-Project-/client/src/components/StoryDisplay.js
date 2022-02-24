@@ -47,7 +47,7 @@ return(
             <div >
                <button onClick={handleDelete}>Delete</button> 
                <button>
-                <Link to='/storyeditor'>Edit Story</Link>
+                <Link to={`/storyeditor/${displayStory.id}`}>Edit Story</Link>
                </button>
             </div>
             <br></br>

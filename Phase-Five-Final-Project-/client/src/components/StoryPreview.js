@@ -11,7 +11,8 @@ console.log(allStories)
 
         <l1>
             <Link allStories={allStories} to={`/story/${allStories.id}`}> {allStories.story_name}</Link>
-            <p>{allStories.author}</p>
+            <br/>
+            <Link user={user} allStories={allStories} to={`/userviewer/${allStories.user_id}`}>{allStories.author}</Link>
             <p>{allStories.age_group}</p>
             <p>{allStories.genre}</p>
             <p>{allStories.style}</p>
