@@ -113,7 +113,7 @@ function StoryEditor({allStories}) {
         //   body: displayStoryBody
         }
         // const id = displayStory.id
-        fetch(`/genres/${displayStory.id}`, {
+        fetch(`/genres/${displayStory.genres_id}`, {
             method: "PATCH",
             headers: {
               'Content-Type': 'application/json',
@@ -146,7 +146,7 @@ function StoryEditor({allStories}) {
             //   body: displayStoryBody
             }
             // const id = displayStory.id
-            fetch(`/styles/${displayStory.id}`, {
+            fetch(`/styles/${displayStory.styles_id}`, {
                 method: "PATCH",
                 headers: {
                   'Content-Type': 'application/json',
@@ -180,7 +180,7 @@ function StoryEditor({allStories}) {
                   body: displayStoryBody
                 }
                 // const id = displayStory.id
-                fetch(`/chapters/${displayStory.id}`, {
+                fetch(`/chapters/${displayStory.chapters_id}`, {
                     method: "PATCH",
                     headers: {
                       'Content-Type': 'application/json',
