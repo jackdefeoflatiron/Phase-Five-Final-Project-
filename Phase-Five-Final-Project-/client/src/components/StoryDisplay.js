@@ -38,9 +38,9 @@ console.log("its the id", id)
 return(
     <div>
         <Link to='/home'>Main Page</Link>
-        <h1>{displayStory.story_name}</h1>
-            <p>{displayStory.author}</p>
-            <p>{displayStory.age_group}</p>
+        <h1>{displayStory?.story_name}</h1>
+            <p>{displayStory?.author}</p>
+            <p>{displayStory?.age_group}</p>
             <p>{displayStory?.genres[0]?.genre}</p>
             <p>{displayStory?.styles[0]?.style}</p>
             <br></br>

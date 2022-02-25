@@ -171,7 +171,7 @@ function onDeleteStory(id) {
               <UserEditor login={login} user={login.user}/>
             </Route>
 
-            <Route path='/storyeditor'>
+            <Route path='/storyeditor/:id'>
               <StoryEditor  allStories={allStories} />
             </Route>
 
