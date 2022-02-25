@@ -11,9 +11,9 @@ class StoriesController < ApplicationController
     end 
 
     def update
-        story = Chapter.find_by(id: params[:id])
+        story = Story.find_by(id: params[:id])
         story.update(story_update_params)
-        render json: chapter 
+        render json: story 
     end 
 
     def create 
@@ -42,7 +42,7 @@ class StoriesController < ApplicationController
         params.permit(:story_name, :author, :age_group, :user_id)
     end 
     def story_update_params
-        params.permit(:story_name, :author, :age_group, :user_id)
+        params.permit(:story_name, :author, :age_group, :user_id, :id)
     end
 
     def genre_params

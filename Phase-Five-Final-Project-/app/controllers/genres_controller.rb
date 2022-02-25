@@ -14,6 +14,12 @@ class GenresController < ApplicationController
         render json: genres 
     end 
 
+    def update
+        genre = Genre.find_by(id: params[:id])
+        genre.update(genre_params)
+        render json: genre
+    end 
+
     def destroy
         genre = find_genre
         genre.destroy

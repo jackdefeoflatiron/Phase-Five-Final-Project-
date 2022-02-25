@@ -77,7 +77,7 @@ function StoryEditor({allStories}) {
         },
         body: JSON.stringify(editedStoryStory),
       })
-      displayStoryStory_name = displayStory.story_name
+    //   displayStoryStory_name = displayStory.story_name
     //   displayStoryAuthor = displayStory.author
       displayStoryAge_group = displayStory.age_group
     //   displayStoryGenres = displayStory.genres
@@ -102,7 +102,7 @@ function StoryEditor({allStories}) {
     const saveGenreChanges = (e) => {
         e.preventDefault();
         let editedStoryGenre = {
-          userId: displayStory.userId,
+        //   userId: displayStory.userId,
         //   story_name: displayStoryStory_name,
         //   author: displayStoryAuthor,
         //   age_group: displayStoryAge_group,
@@ -113,7 +113,7 @@ function StoryEditor({allStories}) {
         //   body: displayStoryBody
         }
         // const id = displayStory.id
-        fetch(`/stories/${displayStory.id}`, {
+        fetch(`/genres/${displayStory.id}`, {
             method: "PATCH",
             headers: {
               'Content-Type': 'application/json',
@@ -135,7 +135,7 @@ function StoryEditor({allStories}) {
         const saveStyleChanges = (e) => {
             e.preventDefault();
             let editedStoryStyle = {
-              userId: displayStory.userId,
+            //   userId: displayStory.userId,
             //   story_name: displayStoryStory_name,
             //   author: displayStoryAuthor,
             //   age_group: displayStoryAge_group,
@@ -146,7 +146,7 @@ function StoryEditor({allStories}) {
             //   body: displayStoryBody
             }
             // const id = displayStory.id
-            fetch(`/stories/${displayStory.id}`, {
+            fetch(`/styles/${displayStory.id}`, {
                 method: "PATCH",
                 headers: {
                   'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ function StoryEditor({allStories}) {
             const saveChapterChanges = (e) => {
                 e.preventDefault();
                 let editedStoryChapter = {
-                  userId: displayStory.userId,
+                //   userId: displayStory.userId,
                 //   story_name: displayStoryStory_name,
                 //   author: displayStoryAuthor,
                 //   age_group: displayStoryAge_group,
@@ -180,7 +180,7 @@ function StoryEditor({allStories}) {
                   body: displayStoryBody
                 }
                 // const id = displayStory.id
-                fetch(`/stories/${displayStory.id}`, {
+                fetch(`/chapters/${displayStory.id}`, {
                     method: "PATCH",
                     headers: {
                       'Content-Type': 'application/json',
