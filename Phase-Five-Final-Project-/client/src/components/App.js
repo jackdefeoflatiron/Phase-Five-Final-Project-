@@ -31,6 +31,17 @@ const [searchStories, setSearchStories] = useState("")
 const [login, setLogin] = useState(false)
 const [isDeleted, setIsDelete] = useState(false)
 
+const [users, setUsers] = useState([])
+
+    useEffect(()=> {
+        fetch('/users')
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            setUsers(data)
+        })
+    }, []) 
+
 // console.log(login)
 // console.log(user)
 let history = useHistory()
@@ -164,8 +175,8 @@ function onDeleteStory(id) {
               <StoryEditor  allStories={allStories} />
             </Route>
 
-            <Route path='userviewer'>
-            <UserViewer user={user} allStories={allStories}/>
+            <Route path='/userviewer/:id'>
+            <UserViewer user={user} users={users} allStories={allStories}/>
             </Route>
 
             <Route path='/'>
@@ -173,7 +184,7 @@ function onDeleteStory(id) {
             </Route>
           </Switch>
           <StoryListContainer 
-        allStories={allStories} onDeleteStory={onDeleteStory}
+        allStories={allStories} onDeleteStory={onDeleteStory} users={users} 
         />
         
         </BrowserRouter>

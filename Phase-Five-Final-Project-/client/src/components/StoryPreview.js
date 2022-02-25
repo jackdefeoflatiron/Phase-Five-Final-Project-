@@ -1,13 +1,27 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import StoryDisplayer from './StoryDisplay'
 import {BrowserRouter, Switch, Route,  Link,  useParams, useHistory} from 'react-router-dom'
 
 
-function StoryPreview({allStories, user, login}) {
+function StoryPreview({allStories, user, users, login}) {
+    // const [users, setUsers] = useState([])
+console.log(users)
+    // useEffect(()=> {
+    //     fetch('/users')
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //         console.log(data)
+    //         setUsers(data)
+    //     })
+    // }, []) 
+    
 
-const id = allStories.user_id
-const params = useParams();
+
 const history = useHistory();
+
+// const id = allStories.user_id
+
+
 console.log(allStories)
     return(
         <div>
@@ -15,7 +29,7 @@ console.log(allStories)
         <l1>
             <Link allStories={allStories} to={`/story/${allStories.id}`}> {allStories.story_name}</Link>
             <br/>
-            <Link user={user} allStories={allStories} to={`/userviewer/${user}`}>{allStories.author}</Link>
+            <Link  users={users} allStories={allStories} to={`/userviewer/${allStories.user_id}`}>{allStories.author}</Link>
             <p>{allStories.age_group}</p>
             <p>{allStories.genre}</p>
             <p>{allStories.style}</p>

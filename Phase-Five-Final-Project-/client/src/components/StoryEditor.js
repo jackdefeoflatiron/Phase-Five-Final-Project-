@@ -1,12 +1,23 @@
-import React, { useState } from "react"
+import React, { useState, useEffect} from "react"
 import {BrowserRouter, Switch, Route, Link, useParams, useHistory} from 'react-router-dom'
 
 
 
 function StoryEditor({allStories}) {
+    // const [users, setUsers] = useState([])
+
+    // useEffect(()=> {
+    //     fetch('/users')
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //         console.log(data)
+    //         setUsers(data)
+    //     })
+    // }, []) 
     const params = useParams();
     const history = useHistory();
-    const displayStory = allStories.find(oneStory => (oneStory.id == params.id))
+    const displayStory = allStories.filter(oneStory => (oneStory.id == params.id))
+    console.log(displayStory)
     // const displayStory = {
     //     story_name: story_name,
     //     author: login.user.username,
@@ -90,33 +101,34 @@ function StoryEditor({allStories}) {
 
 
     return (
+        <div> Hello
         <form onSubmit={saveChanges}>
         <input
           placeholder="story_name"
           type="text"
           name="story_name"
-          value={displayStoryStory_name}
+          value={displayStory.story_name}
           onChange={(e) => setDisplayStoryStory_name (e.target.value)}
         />
         <input 
           placeholder="age_group"
           type="text"
           name="age_group"
-          value={displayStoryAge_group}
+          value={displayStory.age_group}
           onChange={(e) => setDisplayStoryAge_group(e.target.value)}
         />  
       <input
           placeholder="genre"
           type="text"
           name="genre"
-          value={displayStoryGenres}
+          value={displayStory.genres}
           onChange={(e) => setDisplayStoryGenres(e.target.value)}
       />
         <input
           placeholder="style"
           type="text"
           name="style"
-          value={displayStoryStyles}
+          value={displayStory.styles}
           onChange={(e) => setDisplayStoryStyles(e.target.value)}
         />
            
@@ -124,7 +136,7 @@ function StoryEditor({allStories}) {
           placeholder="chapter_title"
           type="text"
           name="title"
-          value={displayStoryTitle}
+          value={displayStory.title}
           onChange={(e) => setDisplayStoryTitle(e.target.value)}
         />
 
@@ -132,7 +144,7 @@ function StoryEditor({allStories}) {
           placeholder="chapter_number"
           type="integer"
           name="chapter_number"
-          value={displayStoryChapter_number}
+          value={displayStory.chapter_number}
           onChange={(e) => setDisplayStoryChapter_number(e.target.value)}
         />
 
@@ -140,7 +152,7 @@ function StoryEditor({allStories}) {
           placeholder="body"
           type="text"
           name="body"
-          value={displayStoryBody}
+          value={displayStory.body}
           onChange={(e) => setDisplayStoryBody(e.target.value)}
         />
       
@@ -156,6 +168,7 @@ function StoryEditor({allStories}) {
       
       
       </form>
+      </div>
     )
 }
 

@@ -3,8 +3,8 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import StoryPreview from './StoryPreview'
 
 
-function StoryList({allStories, user, login,  onDeleteStory}) {
-
+function StoryList({allStories, user, users, login,  onDeleteStory}) {
+    console.log(users)
     console.log(onDeleteStory)
     return(
         <div> 
@@ -13,6 +13,7 @@ function StoryList({allStories, user, login,  onDeleteStory}) {
         <Route path='/storydisplay'> */}
         {allStories.map((allStories)=>
             <StoryPreview
+            users={users}
             user={user}
             onDeleteStory={onDeleteStory}
             key={allStories.id}
